@@ -9,69 +9,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.pasadya.data.util.MemberConstants;
 import com.pasadya.data.util.PropertiesLoader;
 
 public abstract class StoreJDBC implements IShopDAO, Serializable {
 
 	protected Properties dbProperties;
+	private Logger log = LoggerFactory.getLogger(StoreJDBC.class);
 
 	private static final long serialVersionUID = 7047510507515434310L;
 
 	static List<ItemVO> itemInventory = new ArrayList<ItemVO>();
 
-	private static ItemVO item1 = new ItemVO();
-	private static ItemVO item2 = new ItemVO();
-	private static ItemVO item3 = new ItemVO();
-	private static ItemVO item4 = new ItemVO();
-	private static ItemVO item5 = new ItemVO();
-	private static ItemVO item6 = new ItemVO();
-	private static ItemVO item7 = new ItemVO();
-
 	public StoreJDBC() {
-		Properties config = PropertiesLoader.loadProperties(PropertiesLoader.CONFIGURATION_PROPERTIES_FILE);
-		String dbPropsFile = config.getProperty(PropertiesLoader.CONFIG_KEY_DAO_PROPS_FILE);
-		
-		this.dbProperties = PropertiesLoader.loadProperties(dbPropsFile);		
+		Properties config = PropertiesLoader
+				.loadProperties(PropertiesLoader.CONFIGURATION_PROPERTIES_FILE);
+		String dbPropsFile = config
+				.getProperty(PropertiesLoader.CONFIG_KEY_DAO_PROPS_FILE);
+
+		this.dbProperties = PropertiesLoader.loadProperties(dbPropsFile);
 	}
 
-	public static void setTestShopItems() {
-		item1.itemName = "test item 1";
-		item1.itemId = 1;
-		item2.itemName = "test item 2";
-		item2.itemId = 2;
-		itemInventory.add(item1);
-		itemInventory.add(item2);
-
-		item3.itemName = "test item 1";
-		item3.itemId = 3;
-		item4.itemName = "test item 2";
-		item4.itemId = 4;
-		itemInventory.add(item3);
-		itemInventory.add(item4);
-
-		item5.itemName = "test item 1";
-		item5.itemId = 5;
-		item6.itemName = "test item 2";
-		item6.itemId = 6;
-		itemInventory.add(item5);
-		itemInventory.add(item6);
-
-		item7.itemName = "test item 2";
-		item7.itemId = 7;
-		itemInventory.add(item7);
-
-	}
-
-	public static List<ItemVO> getTestItems() {
-		setTestShopItems();
-		return itemInventory;
-	}
 	public List<ItemVO> getShopItems() {
-
 		return itemInventory;
 	}
-
-	// Production Implementation Code
 
 	public List<CategoryVO> getTopCategories() throws SQLException {
 		List<CategoryVO> topCategories = new ArrayList<CategoryVO>();
@@ -120,7 +84,7 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 
 	public List<ItemVO> getAllShopItems() {
 		List<ItemVO> shopItems = new ArrayList<ItemVO>();
-		
+
 		Connection connection = null;
 
 		try {
@@ -185,6 +149,80 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 		return item;
 	}
 
+	// Map the result set of the db query to the VO
+	private ItemVO mapItem(ResultSet resultSet) throws SQLException {
+		final ItemVO item = new ItemVO();
+		item.setItemCategory(resultSet.getString("category"));
+		item.setItemDescription(resultSet.getString("description"));
+		item.setItemName(resultSet.getString("name"));
+		item.setItemPrice(resultSet.getString("price"));
+
+		return item;
+	}
+
+	public MemberVO getMemberInformation(String id, Boolean auth) {
+		MemberVO member = new MemberVO();
+		if (id != null && auth == true) {
+			Connection connection = null;
+			try {
+				connection = this.getConnection();
+				final String query = "SELECT * FROM Member WHERE username = ?";
+				PreparedStatement statement = connection
+						.prepareStatement(query);
+				statement.setString(1, id);
+				ResultSet resultSet = statement.executeQuery();
+				resultSet.next();
+
+				resultSet.beforeFirst();
+
+				while (resultSet.next()) {
+					member.setUsername(resultSet
+							.getString(MemberConstants.USERNAME));
+					member.setPassword(resultSet
+							.getString(MemberConstants.PASSWORD));
+					member.setFname(resultSet
+							.getString(MemberConstants.FIRST_NAME));
+					member.setLname(resultSet
+							.getString(MemberConstants.LAST_NAME));
+					member.setCity(resultSet.getString(MemberConstants.CITY));
+					member.setState(resultSet.getString(MemberConstants.STATE));
+					member.setZip(resultSet.getString(MemberConstants.ZIP));
+					member.setAddress(resultSet
+							.getString(MemberConstants.ADDRESS));
+					member.setEmail(resultSet.getString(MemberConstants.EMAIL));
+				}
+				resultSet.close();
+			} catch (SQLException e) {
+				log.error("SQL Exception in retrieving user information");
+			} finally {
+				catchAndClose(connection);
+			}
+
+		} else {
+			log.error("Error logging in user [" + id + "]");
+
+		}
+		return member;
+	}
+	public void setMemberInformation(MemberVO member) {
+		Connection connection = null;
+		try {
+			connection = this.getConnection();
+			final String insertQuery = "INSERT INTO Member ('username', 'fname') values (?, ?) ";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+			preparedStatement.setString(1, member.getUsername());
+			preparedStatement.setString(2, member.getFname());
+			
+			int insertExecute = preparedStatement.executeUpdate(insertQuery);
+		} catch (SQLException e){
+		
+		}finally {
+			catchAndClose(connection);
+		}
+		
+	}
+
 	// Convenience method for closing the database and throwing errors
 
 	private void catchAndClose(Connection conn) {
@@ -199,16 +237,5 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 
 	// Abstract method for getting the database Conneciton
 	protected abstract Connection getConnection() throws SQLException;
-
-	// Map the result set of the db query to the VO
-	private ItemVO mapItem(ResultSet resultSet) throws SQLException {
-		final ItemVO item = new ItemVO();
-		item.setItemCategory(resultSet.getString("category"));
-		item.setItemDescription(resultSet.getString("description"));
-		item.setItemName(resultSet.getString("name"));
-		item.setItemPrice(resultSet.getString("price"));
-
-		return item;
-	}
 
 }
