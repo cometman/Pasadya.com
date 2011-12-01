@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html xmlns:wicket="http://wicket.apache.org" xml:lang="en" lang="en">
+<head>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+</head>
+<body>
+
+
+	<div class="container">
+
+		<ul class="navBar">
+			<li class="white">
+				<p>
+					<a wicket:id="home">PASADYA</a>
+				</p>
+				<p class="subtext">The Front page</p>
+			</li>
+			<li id="shop" class="white">
+				<p>
+					<a wicket:id="shop">SHOP</a>
+				</p> <a wicket:id="art" class="subtext">Art</a><br />
+				<div class="seperator"></div> <a wicket:id="babies"  class="subtext">Babies</a><br />
+				<div class="seperator"></div> <a wicket:id="kids"  class="subtext">Kids</a><br />
+				<div class="seperator"></div> <a wicket:id="weddings"  class="subtext">Weddings</a><br />
+				<div class="seperator"></div> 
+				
+<!-- 				<a wicket:id="cards" class="subtext">Cards</a><br /> -->
+				
+<!-- 				<div class="seperator"></div> <a wicket:id="customcards" -->
+<!-- 				class="subtext">Custom Cards</a><br /> -->
+<!-- 				<div class="seperator"></div> <a wicket:id="custommurals" -->
+<!-- 				class="subtext">Custom Murals</a> -->
+				
+			</li>
+			<li id="about" class="white">
+				<p>
+					<a wicket:id="about">ABOUT</a>
+				</p> <a href=# class="subtext">What is Pasadya?</a>
+				<div class="seperator"></div>
+				<a wicket:id="contact" class="subtext">Contact</a>
+			</li>
+			<li id="blog" class="white">
+				<p>
+					<a href="http://www.hellopasadya.blogspot.com" target="blank">BLOG</a>
+				</p>
+				<p class="subtext">Danies blog</p>
+			</li>
+			<li id="portfolio" class="white">
+				<p>
+					<a wicket:id="portfolio">PORTFOLIO</a>
+				</p>	
+				<a href=# class="subtext">View</a>
+			</li>
+		</ul>
+
+		<div style="text-align: center; margin-bottom: 50px;"></div>
+		<div class="centerComponent">
+			<wicket:child />
+		</div>
+		<img wicket:id="featureDay" class = "featureDay"/>
+		<!-- 		<img wicket:id="treeLeft" /> -->
+		<footer>
+			<a wicket:id="blogLink" target="blank" class="blogLink"><img
+				wicket:id="visitBlog" class="visitBlog" /></a>
+		</footer>
+
+	</div>
+</body>
+
+
+</html>
