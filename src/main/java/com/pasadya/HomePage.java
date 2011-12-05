@@ -15,6 +15,7 @@ public class HomePage extends PasadyaBasePage {
     	add(new Image("mainPageImage", new Model<String>("assets/images/BrandNew.png")));
 //    	add(new Image("treeLeftImage", new Model<String>("assets/images/treeLeft.png")));
     	
+    
     	
     }
 }

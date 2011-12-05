@@ -6,10 +6,24 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
 </head>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(' .cartPanel').hide();
+
+		$('#accountLogin').click(function() {
+			$(' .cartPanel').toggle('slow');
+		});
+	});
+</script>
 <body>
 
-
 	<div class="container">
+		<div id="accountLogin" class="accountLogin">account | cart</div>
+		<div class="cartPanel"
+			wicket:id="cartPanel">
+						
+			
+		</div>
 
 		<ul class="navBar">
 			<li class="white">
@@ -22,25 +36,22 @@
 				<p>
 					<a wicket:id="shop">SHOP</a>
 				</p> <a wicket:id="art" class="subtext">Art</a><br />
-				<div class="seperator"></div> <a wicket:id="babies"  class="subtext">Babies</a><br />
-				<div class="seperator"></div> <a wicket:id="kids"  class="subtext">Kids</a><br />
-				<div class="seperator"></div> <a wicket:id="weddings"  class="subtext">Weddings</a><br />
-				<div class="seperator"></div> 
-				
-<!-- 				<a wicket:id="cards" class="subtext">Cards</a><br /> -->
-				
-<!-- 				<div class="seperator"></div> <a wicket:id="customcards" -->
-<!-- 				class="subtext">Custom Cards</a><br /> -->
-<!-- 				<div class="seperator"></div> <a wicket:id="custommurals" -->
-<!-- 				class="subtext">Custom Murals</a> -->
-				
+				<div class="seperator"></div> <a wicket:id="babies" class="subtext">Babies</a><br />
+				<div class="seperator"></div> <a wicket:id="kids" class="subtext">Kids</a><br />
+				<div class="seperator"></div> <a wicket:id="weddings"
+				class="subtext">Weddings</a><br />
+				<div class="seperator"></div> <!-- 				<a wicket:id="cards" class="subtext">Cards</a><br /> -->
+
+				<!-- 				<div class="seperator"></div> <a wicket:id="customcards" -->
+				<!-- 				class="subtext">Custom Cards</a><br /> --> <!-- 				<div class="seperator"></div> <a wicket:id="custommurals" -->
+				<!-- 				class="subtext">Custom Murals</a> -->
+
 			</li>
 			<li id="about" class="white">
 				<p>
 					<a wicket:id="about">ABOUT</a>
 				</p> <a href=# class="subtext">What is Pasadya?</a>
-				<div class="seperator"></div>
-				<a wicket:id="contact" class="subtext">Contact</a>
+				<div class="seperator"></div> <a wicket:id="contact" class="subtext">Contact</a>
 			</li>
 			<li id="blog" class="white">
 				<p>
@@ -51,8 +62,7 @@
 			<li id="portfolio" class="white">
 				<p>
 					<a wicket:id="portfolio">PORTFOLIO</a>
-				</p>	
-				<a href=# class="subtext">View</a>
+				</p> <a href=# class="subtext">View</a>
 			</li>
 		</ul>
 
@@ -60,8 +70,6 @@
 		<div class="centerComponent">
 			<wicket:child />
 		</div>
-		<img wicket:id="featureDay" class = "featureDay"/>
-		<!-- 		<img wicket:id="treeLeft" /> -->
 		<footer>
 			<a wicket:id="blogLink" target="blank" class="blogLink"><img
 				wicket:id="visitBlog" class="visitBlog" /></a>

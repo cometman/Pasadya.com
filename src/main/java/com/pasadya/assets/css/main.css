@@ -1,12 +1,10 @@
 /* CSS FOR MENU BAR */
-
-ul.navBar {	
-	position: relative;
+ul.navBar {
 	z-index: 1;
+	position: relative;
 	margin-left: 100px;
 	text-align: center;
 	padding-bottom: 50px;
-
 }
 
 li {
@@ -18,10 +16,7 @@ li {
 	font-stretch: normal;
 	font-size: 16px;
 	font-stretch: normal;
-	padding-right: 40px;
-	
-	
-	
+	padding-right: 20px;
 	width: 105px;
 	height: 50px;
 	float: left;
@@ -29,6 +24,7 @@ li {
 	text-align: left;
 	overflow: hidden;
 }
+
 h2 {
 	font-family: "Courier New", "HelveticaNeueLight", "HelveticaNeue-Light",
 		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
@@ -37,6 +33,7 @@ h2 {
 	font-size: 32px;
 	color: gray;
 }
+
 a {
 	color: black;
 	text-decoration: none;
@@ -45,6 +42,7 @@ a {
 .seperator {
 	height: 10px;
 }
+
 .subtext {
 	font-family: "HelveticaNeueLight", "HelveticaNeue-Light",
 		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
@@ -52,13 +50,10 @@ a {
 		sans-serif;
 	font-weight: 300;
 	font-stretch: normal;
-	
 	font-size: 12px;
 	padding-left: 5px;
 	width: 100px;
 	padding-top: 5px;
-	
-
 }
 
 /*Menu Color Classes*/
@@ -109,6 +104,7 @@ h2 {
 	font-stretch: normal;
 	font-size: 32px;
 }
+
 p {
 	font-family: "Courier New", "HelveticaNeueLight", "HelveticaNeue-Light",
 		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
@@ -140,7 +136,6 @@ p {
 	text-align: center;
 }
 
-
 .shoppingWrapper {
 	text-align: center;
 	max-width: 800px;
@@ -170,8 +165,8 @@ p {
 
 .container {
 	background-color: white;
-	position: relative:
-	z-index: -1;
+	position: relative:    
+	z-index:     -1;
 	width: 980px;
 	margin: 0 auto;
 	-moz-box-shadow: 0px 5px 5px 5px #ccc;
@@ -206,20 +201,14 @@ table.center {
 }
 
 .mainPageImageContainer {
-	
 	position: absolute;
 	margin-left: 120px;
 }
 
 .mainPageImage {
 	z-index: 1;
-	margin-right: width:   auto;
+	margin-right: width:       auto;
 	height: 500px;
-}
-
-.featureDay{
-	float: right;
-	margin-right: -50px;
 }
 
 .treeLeft {
@@ -239,15 +228,12 @@ table.center {
 	position: absolute;
 	text-decoration: none;
 	border-style: none;
-
-	
 }
 
 footer {
-	position:absolute;
+	position: absolute;
 	padding-left: 600px;
 	margin-top: 40%;
-	
 }
 
 .danieProfile {
@@ -298,13 +284,11 @@ footer {
 
 /* CSS FOR CONTACT PAGE
 */
-
 .formContainer {
-	position:absolute;
+	position: absolute;
 	text-align: center;
 	left: 300px;
 	float: right;
-
 }
 
 .formText {
@@ -315,7 +299,6 @@ footer {
 .namelabel {
 	padding-top: 5px;
 	margin-right: 15px;
-	
 }
 
 .emailLabel {
@@ -325,9 +308,9 @@ footer {
 
 .messageLabel {
 	margin-right: 15px;
-	
 }
-.contactText{
+
+.contactText {
 	text-align: left;
 	padding-left: 70px;
 	padding-top: 50px;
@@ -336,76 +319,72 @@ footer {
 	margin-left: 20px;
 }
 
-.contactImage{
-	float:left;
+.contactImage {
+	float: left;
 }
 
-:invalid { 
-  border-color: #e88;
-  -webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
-  -moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-  -o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-  -ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
-  box-shadow:0 0 5px rgba(255, 0, 0, .8);
+:invalid {
+	border-color: #e88;
+	-webkit-box-shadow: 0 0 5px rgba(255, 0, 0, .8);
+	-moz-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	-o-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	-ms-box-shadow: 0 0 5px rbba(255, 0, 0, .8);
+	box-shadow: 0 0 5px rgba(255, 0, 0, .8);
 }
 
 :required {
-  border-color: #88a;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+	border-color: #88a;
+	-webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+	-o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+	-ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+	box-shadow: 0 0 5px rgba(0, 0, 255, .5);
 }
 
 form {
-  margin-right: -100px;
-  float: right;
-  width:450px;
-  margin: 12px auto;
-  text-align: right;
+	margin-right: -100px;
+	float: right;
+	width: 450px;
+	margin: 12px auto;
+	text-align: right;
 }
 
 input {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border:1px solid #ccc;
-  font-size:12px;
-  width:300px;
-  min-height:20px;
-  display:block;
-  margin-bottom:15px;
-  margin-top:5px;
-  outline: none;
-  float: right;
-  -webkit-border-radius:5px;
-  -moz-border-radius:5px;
-  -o-border-radius:5px;
-  -ms-border-radius:5px;
-  border-radius:5px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	border: 1px solid #ccc;
+	font-size: 12px;
+	width: 300px;
+	min-height: 20px;
+	display: block;
+	margin-bottom: 15px;
+	margin-top: 5px;
+	outline: none;
+	float: right;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	border-radius: 5px;
 }
 
 label {
-	
 	font-size: 14px;
 }
 
 input[type=submit] {
-   background-color: gray;
-  
-  margin-left: 220px;
-  background:none;
-  padding:10px;
-  width: 90px;
-  
+	background-color: gray;
+	margin-left: 220px;
+	background: none;
+	padding: 10px;
+	width: 90px;
 }
-
 
 /*  Item Modal Window  */
-
-.w_blue{
-		min-width: 1000px;
+.w_blue {
+	min-width: 1000px;
 }
-.w_content_container{
+
+.w_content_container {
 	min-width: 750px;
 	padding: 20px 20px 20px 20px
 }
@@ -414,15 +393,50 @@ input[type=submit] {
 	text-align: left;
 }
 
-.itemPurchasePanel{
-	text-align: right;	
+.itemPurchasePanel {
+	text-align: right;
 }
 
 .margin-right {
-	margin-right:50%;
+	margin-right: 50%;
 }
+
 .wicket-modal {
 	left: 0px;
-
 }
 
+.accountLogin {
+	margin-left: 90%;
+	position: static;
+	margin-top: -20px;
+}
+
+.cartPanel {
+	position: relative; 
+	z-index : 1;
+	float: right;
+	background-color:white;
+	border-style: solid;
+	border-color: gray;
+	border: 10px 10px 10px 10px;
+	height: 200px;
+	width: 200px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	z-index: 1;
+}
+
+.loginForm{
+	padding: 10px 10px 10px 10px;
+}
+
+.usernameField {
+	max-width: 170px;
+}
+
+.passwordField {
+	max-width: 170px;
+}
+.accountPanelHead {
+	padding:10px 10px 10px 10px;
+}
