@@ -204,23 +204,94 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 		}
 		return member;
 	}
+
 	public void setMemberInformation(MemberVO member) {
 		Connection connection = null;
 		try {
+			System.out.println("*********************************");
+			System.out.println(member.getFname());
 			connection = this.getConnection();
-			final String insertQuery = "INSERT INTO Member ('username', 'fname') values (?, ?) ";
-			
-			PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+			final String insertQuery = "INSERT INTO Member (username, fname, lname, password, email) values (?, ?, ?, ?, ?) ";
+
+			PreparedStatement preparedStatement = connection
+					.prepareStatement(insertQuery);
 			preparedStatement.setString(1, member.getUsername());
 			preparedStatement.setString(2, member.getFname());
-			
-			int insertExecute = preparedStatement.executeUpdate(insertQuery);
-		} catch (SQLException e){
-		
-		}finally {
+			preparedStatement.setString(3, member.getLname());
+			preparedStatement.setString(4, member.getPassword());
+			preparedStatement.setString(5, member.getEmail());
+
+			int i = preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			log.error("Error adding new member!");
+		} finally {
 			catchAndClose(connection);
 		}
-		
+
+	}
+
+	public boolean checkMemberEmail(String email) {
+
+		Connection connection = null;
+		boolean foundResult = false;
+		try {
+			connection = this.getConnection();
+			final String usernameQuery = "SELECT email From Member where email = ?";
+			PreparedStatement preparedStatment = connection
+					.prepareStatement(usernameQuery);
+			preparedStatment.setString(1, email);
+
+			ResultSet resultSet = preparedStatment.executeQuery();
+
+			if (resultSet.next()) {
+				foundResult = true;
+			}
+		} catch (SQLException e) {
+
+		} finally {
+			catchAndClose(connection);
+
+		}
+		return foundResult;
+
+	}
+
+	public boolean checkMemberUsername(String username) {
+		boolean foundResult = false;
+		Connection connection = null;
+
+		try {
+			connection = this.getConnection();
+			final String emailQuery = "SELECT username From Member where username = ?";
+			PreparedStatement secondStatment = connection
+					.prepareStatement(emailQuery);
+			secondStatment.setString(1, username);
+
+			ResultSet emailResult = secondStatment.executeQuery();
+
+			while (emailResult.next()) {
+				foundResult = true;
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+		} finally {
+			catchAndClose(connection);
+		}
+
+		return foundResult;
+	}
+
+	public boolean authenticateUser(String username, String password) {
+		boolean authenticate = false;
+
+		if (this.getMemberInformation(username, true).getUsername() != null) {
+			if (this.getMemberInformation(username, true).getPassword()
+					.equals(password)) {
+				authenticate = true;
+			}
+		}
+		return authenticate;
+
 	}
 
 	// Convenience method for closing the database and throwing errors

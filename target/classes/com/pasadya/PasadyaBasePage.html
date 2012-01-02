@@ -8,9 +8,17 @@
 </head>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$(' .accountPanel').hide();
 		$(' .cartPanel').hide();
 
-		$('#accountLogin').click(function() {
+		$(' .accountLogin').click(function() {
+			$('.cartPanel').hide();
+			$(' .accountPanel').toggle('slow');
+		});
+
+		$(' .cartButton').click(function() {
+
+			$('.accountPanel').hide();
 			$(' .cartPanel').toggle('slow');
 		});
 	});
@@ -18,12 +26,10 @@
 <body>
 
 	<div class="container">
-		<div id="accountLogin" class="accountLogin">account | cart</div>
-		<div class="cartPanel"
-			wicket:id="cartPanel">
-						
-			
-		</div>
+		<span class="accountLogin">account</span>&nbsp;|&nbsp; 
+		<span class="cartButton">cart</span>
+		<div class="accountPanel" wicket:id="accountPanel"></div>
+		<div class="cartPanel" wicket:id="cartPanel"></div>
 
 		<ul class="navBar">
 			<li class="white">

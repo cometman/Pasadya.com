@@ -11,4 +11,7 @@ public interface IShopDAO {
 	public List<ItemVO> getAllShopItems();
 	public MemberVO getMemberInformation(String id, Boolean auth);
 	public void setMemberInformation(MemberVO member);
+	public boolean checkMemberEmail(String email);
+	public boolean checkMemberUsername(String username);
+	public boolean authenticateUser(String username, String password);
 }

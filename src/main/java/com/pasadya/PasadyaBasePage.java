@@ -19,6 +19,7 @@ import com.pasadya.pages.About;
 import com.pasadya.pages.Contact;
 import com.pasadya.pages.Portfolio;
 import com.pasadya.shop.AccountPanel;
+import com.pasadya.shop.CartPanel;
 import com.pasadya.shop.Shop;
 import com.pasadya.shop.UserSession;
 
@@ -84,7 +85,10 @@ public class PasadyaBasePage extends WebPage {
 
 		// Add the account/cart panel
 
-		AccountPanel cartPanel = new AccountPanel("cartPanel");
+		AccountPanel accountPanel = new AccountPanel("accountPanel");
+		add(accountPanel);
+		
+		CartPanel cartPanel = new CartPanel("cartPanel");
 		add(cartPanel);
 
 		// add(new Image("treeLeft", new

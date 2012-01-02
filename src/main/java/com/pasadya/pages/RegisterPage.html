@@ -1,0 +1,23 @@
+<html xmlns:wicket>
+<wicket:extend>
+	<form wicket:id="newUserForm" class="registerForm">
+		<p>
+			<Label class="regLabel">First name</Label><input type="text"
+				wicket:id="fname"> <br /> <br /> <br /> <Label
+				class="regLabel">Last name</Label><input type="text"
+				wicket:id="lname"><br /> <br /> <br /> <Label
+				class="regLabel">Username</Label><input type="text"
+				wicket:id="username"> <br /> <br /> <br /> <Label
+				class="regLabel">Password</Label><input type="text"
+				wicket:id="password"><br /> <br /> <br />
+			<Label class="regLabel">Retype Password</Label><input type="text"
+				wicket:id="repassword"><br /> <br /> <br /> <Label
+				class="regLabel">Email address</Label><input type="text"
+				wicket:id="email"> <input wicket:id="registerButton"
+				type="submit" value="Register" />
+		</p>
+	</form>
+	<div wicket:id="formFeedback"></div>
+	<div wicket:id="passwordFeedback"></div>
+</wicket:extend>
+</html>
