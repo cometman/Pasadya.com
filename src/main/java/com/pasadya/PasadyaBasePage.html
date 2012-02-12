@@ -16,21 +16,27 @@
 			$(' .accountPanel').toggle('slow');
 		});
 
-		$(' .cartButton').click(function() {
+		$(' .cartLabel').click(function() {
 
 			$('.accountPanel').hide();
 			$(' .cartPanel').toggle('slow');
 		});
 	});
+
+	function toggleCart() {
+		$(' .cartPanel').toggle('slow');
+	}
 </script>
 <body>
 
 	<div class="container">
-		<span class="accountLogin">account</span>&nbsp;|&nbsp; 
-		<span class="cartButton">cart</span>
+		<span class="accountLogin">account</span>&nbsp;|&nbsp; <span
+			class="cartButton">cart</span>
 		<div class="accountPanel" wicket:id="accountPanel"></div>
 		<div class="cartPanel" wicket:id="cartPanel"></div>
-
+		<div class="cartLink" wicket:id="cartLink">
+			<div class="cartLabel" wicket:id="cartLabel"></div>
+		</div>
 		<ul class="navBar">
 			<li class="white">
 				<p>

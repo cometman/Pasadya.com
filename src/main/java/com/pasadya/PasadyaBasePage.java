@@ -1,8 +1,13 @@
 package com.pasadya;
 
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.image.Image;
@@ -26,8 +31,9 @@ import com.pasadya.shop.UserSession;
 public class PasadyaBasePage extends WebPage {
 
 	public PageParameters parm = new PageParameters();
-
+	public CartPanel cartPanel;
 	private static final long serialVersionUID = 1L;
+	private AjaxLink<Void> cartLink;
 
 	public PasadyaBasePage() {
 		ExternalLink blogLink;
@@ -87,9 +93,30 @@ public class PasadyaBasePage extends WebPage {
 
 		AccountPanel accountPanel = new AccountPanel("accountPanel");
 		add(accountPanel);
-		
-		CartPanel cartPanel = new CartPanel("cartPanel");
+
+		if (cartPanel == null) {
+			cartPanel = new CartPanel("cartPanel");
+		}
+
 		add(cartPanel);
+
+		Label cartLabel = new Label("cartLabel", "cart Test");
+
+		cartLink = new AjaxLink<Void>("cartLink") {
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+
+			cartPanel = cartPanel.getCartPanel();
+			
+
+			}
+		};
+
+		cartLink.add(new AttributeModifier("onclick",
+				".cartPannel.toggle(slow)"));
+		add(cartLink);
+		cartLink.add(cartLabel);
 
 		// add(new Image("treeLeft", new
 		// PackageResourceReference(HomePage.class,

@@ -1,5 +1,6 @@
 package com.pasadya.shop;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import com.pasadya.data.ItemVO;
 import com.pasadya.data.ShopFactory;
 import com.pasadya.data.util.PageParametersConstants;
 
-public class Shop extends PasadyaBasePage {
+public class Shop extends PasadyaBasePage implements Serializable {
 
 	private final int MODAL_WINDOW_WIDTH = 800;
 	private final int MODAL_WINDOW_HEIGHT = 600;

@@ -5,7 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import com.pasadya.data.CartVO;
 import com.pasadya.data.IShopDAO;
+import com.pasadya.data.ItemVO;
 import com.pasadya.data.MemberVO;
 import com.pasadya.data.ShopFactory;
 import com.pasadya.shop.UserSession;
@@ -37,29 +39,28 @@ public class UnitTests {
 		UserSession session = UserSession.get();
 		MemberVO testMember = new MemberVO();
 		testMember.setFname("Clay");
-		testMember.setLname("Selby");		
-		session.setMember(testMember);			
+		testMember.setLname("Selby");
+		session.setMember(testMember);
 		assertNotNull(session.getMember());
 		assertTrue(session.isAuthenticated());
 	}
-	
+
 	@Test
 	public void logIn_did_authenticate() {
 		UserSession session = UserSession.get();
 		assertTrue(session.isAuthenticated());
 	}
-	
-	
+
 	@Test
 	public void daoCanFetchMemberUserName() {
 		assertEquals(true, shopDAO.checkMemberUsername("cometman"));
 	}
-	
+
 	@Test
 	public void daoCanFetchMemberEmail() {
 		assertEquals(true, shopDAO.checkMemberEmail("csbuiss@gmail.com"));
 	}
-	
+
 	@Test
 	public void canAddNewMember() {
 		tempMember.setFname("bob");
@@ -67,23 +68,52 @@ public class UnitTests {
 		tempMember.setUsername("xena");
 		tempMember.setPassword("horray");
 		tempMember.setEmail("msn@gmail.com");
-		
+
 		shopDAO.setMemberInformation(tempMember);
-		
-		assertTrue(shopDAO.getMemberInformation(tempMember.getUsername(), true).getUsername().equals("xena"));
+
+		assertTrue(shopDAO.getMemberInformation(tempMember.getUsername(), true)
+				.getUsername().equals("xena"));
 		System.out.println("TESTING");
-		System.out.println(shopDAO.getMemberInformation(tempMember.getUsername(), true).getFname());
+		System.out.println(shopDAO.getMemberInformation(
+				tempMember.getUsername(), true).getFname());
 	}
-	
+
+	// See if we can add items to the cart
+	@Test
+	public void canAddItemToCart() {
+
+		CartVO cart = new CartVO();
+
+		ItemVO testItem = new ItemVO();
+		testItem.setItemName("First Item");
+		testItem.setItemPrice("23.00");
+		testItem.setItemDescription("Stuff here");
+		testItem.setItemCategory("Art");
+		cart.addToCart(testItem);
+
+		UserSession.get().setCart(cart);
+		System.out.println("cool test "
+				+ UserSession.get().getCart(UserSession.get().getMember())
+						.getCartList().size());
+		assertEquals(1, cart.getCartList().size());
+	}
+
+	@Test
+	public void sessionCartContainsItems() {
+
+		assertEquals(1, UserSession.get()
+				.getCart(UserSession.get().getMember()).getCartList().size());
+
+	}
+
 	// This is the last test (It starts the server)
 	@Test
-	public void serverDidStart(){
+	public void serverDidStart() {
 		try {
 			Start.main(null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 }

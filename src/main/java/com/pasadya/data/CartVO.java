@@ -1,18 +1,32 @@
 package com.pasadya.data;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class CartVO {
-	private List<ItemVO> item;
+import com.pasadya.shop.UserSession;
+
+public class CartVO implements Serializable {
+	private List<ItemVO> cartList;
 	private int quantity;
 	private String total;
+	private UserSession userSession = UserSession.get();
 
-	public List<ItemVO> getItem() {
-		return item;
+	public CartVO() {
+		if (cartList == null) {
+			cartList = new ArrayList<ItemVO>();
+
+		} else {
+			userSession.getCart(userSession.getMember());
+		}
 	}
 
-	public void setItem(List<ItemVO> item) {
-		this.item = item;
+	public List<ItemVO> getCartList() {
+		return cartList;
+	}
+
+	public void setCartList(List<ItemVO> cartList) {
+		this.cartList = cartList;
 	}
 
 	public int getQuantity() {
@@ -29,5 +43,9 @@ public class CartVO {
 
 	public void setTotal(String total) {
 		this.total = total;
+	}
+
+	public void addToCart(ItemVO item) {
+		cartList.add(item);
 	}
 }
