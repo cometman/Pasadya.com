@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<body>
+<wicket:extend>
+
+<a wicket:id="dialog.open1">open dialog</a><br/>
+
+<div wicket:id="dialog" title="Basic dialog">
+	<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
+<br/>
+<table>
+<tbody>
+  <tr wicket:id="pageable">
+      <td><span wicket:id="somecolumn">[text]</span></td>
+      <td>
+          <div wicket:id="confirm-dialog">
+              <p>Confirm!</p>
+          </div>
+          <a href=""#"" wicket:id="accept">accept</a>
+      </td>
+  </tr>
+</tbody>
+</table>
+
+</wicket:extend>
+</body>
+</html>

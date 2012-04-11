@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<body>
+<wicket:extend>
+
+
+<div id="products" style="width: 550px;">
+	<h1 class="ui-widget-header">Products</h1>	
+	<div wicket:id="catalog">
+		<h3><a href="#">T-Shirts</a></h3>
+		<div>
+			<ul>
+				<li><span wicket:id="lolcatShirt" /></li>
+				<li><span wicket:id="cheezeburgerShirt" /></li>
+				<li><span wicket:id="buckitShirt" /></li>
+			</ul>
+		</div>
+		<h3><a href="#">Bags</a></h3>
+		<div>
+			<ul>
+				<li><span wicket:id="zebraStriped" /></li>
+				<li><span wicket:id="blackLeather" /></li>
+				<li><span wicket:id="alligatorLeather" /></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="cart" style="width: 550px;">
+	<h1 class="ui-widget-header">Shopping Cart</h1>
+	<div class="ui-widget-content">
+		<ol wicket:id="cartContainer">
+			<li class="placeholder">Add your items here</li>
+		</ol>
+	</div>
+</div>
+
+
+</wicket:extend>
+</body>
+</html>

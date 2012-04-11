@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<body>
+<wicket:extend>
+
+    <a id="link0" href="#">i'm not a wicket component. click me to show an alert</a>
+
+    <br/><br/>
+    <span wicket:id="label"/>
+
+    <br/><br/>
+
+    <p>
+        Let it be known that the party of the first part
+        and the party of the second part are henceforth
+        and hereto directed to assess the allegations
+        for factual correctness... (<a id="censoredA" href="#">click!</a>)
+
+    <div id="censoredDiv"
+         style="width:400px; height:65px; font-size:36px; text-align:center; color:yellow; background:red; padding-top:25px; top:0; left:0; display:none;">
+        <span id="censoredSpan" style="display:none;">CENSORED!</span>
+    </div>
+    </p>
+
+    <br/>
+    
+    <div id="shakeContainer" style="border: 1px solid black; padding: 10px;">
+        <p style="font-weight: bold;">This example demonstrates "form shaking" on failed validation</p>
+        <br/>
+        <form wicket:id="shakeForm">
+            Value: <input type="text" wicket:id="shakeValue" />
+            <input type="submit" />
+            <span wicket:id="feedbackPanel" />
+        </form>
+    </div>
+    <br/>
+    <br/>
+
+    <br/>
+    <p style="font-weight: bold;">This example demonstrates some animation using JQWicket Selector API</p>
+    <br/>
+    <div id="play"
+         style="border: 1px solid black; width: 50px; height: 20px; float: left; padding: 3px; margin: 5px;">play
+    </div>
+    <div id="back" style="border: 1px solid black; width: 50px; height: 20px; float: left; padding: 3px; margin: 5px;">
+        back
+    </div>
+    <br/>
+
+    <div style="clear: both;"/>
+    <div id="testDIV" style="background: green; width: 200px; height: 100px;">&nbsp;</div>
+
+
+</wicket:extend>
+</body>
+</html>

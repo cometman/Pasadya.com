@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<head>
+    <wicket:head>
+        <style type="text/css">
+            .kwicks li{
+            float: left;
+            width: 125px;
+            height: 100px;
+            margin-right: 5px;
+            }
+            #kwick1 {
+            background-color: #53b388;
+            background-image: url('_images/kwicks/meet.gif');
+            }
+            #kwick2 {
+            background-color: #5a69a9;
+            background-image: url('_images/kwicks/kwicks.gif');
+            }
+            #kwick3 {
+            background-color: #c26468;
+            background-image: url('_images/kwicks/for.gif');
+            }
+            #kwick4 {
+            background-color: #bf7cc7;
+            background-image: url('_images/kwicks/jquery.gif');
+            margin-right: none;
+            }
+        </style>
+    </wicket:head>
+</head>
+<body>
+<wicket:extend>
+    <ul wicket:id="kwicks" class="kwicks">
+        <li id="kwick1"></li>
+        <li id="kwick2"></li>
+        <li id="kwick3"></li>
+        <li id="kwick4"></li>
+    </ul>
+</wicket:extend>
+</body>
+</html>

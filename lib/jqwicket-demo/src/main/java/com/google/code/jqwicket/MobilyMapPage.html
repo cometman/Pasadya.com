@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<head>
+<wicket:head>
+<style type="text/css">
+/* ------ example1
+-----------------------------------------------*/
+.europe_map {
+	margin: 10px 0;
+	width: 960px;
+	height: 500px;
+}
+
+
+ul.map_buttons,ul.map_buttons li {
+	display: block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.map_buttons li {
+	float: left;
+}
+
+.map_buttons a {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	background: #EDEDED;
+	color: #111;
+	display: block;
+	float: left;
+	font-size: 11px;
+	line-height: 28px;
+	margin-right: 4px;
+	outline: none;
+	padding: 0 15px;
+	text-decoration: none;
+}
+
+.map_buttons a:hover {
+	background: #111;
+	color: #fff;
+}
+
+#mapcontent a {
+	color: #fff;
+}
+</style>
+</wicket:head>
+</head>
+<body>
+<wicket:extend>
+
+	<div id="mapcontent">
+		<div wicket:id="europeMap" class="europe_map">
+			<img src="_images/mobilymap/europe_map.jpg" alt="Europe Map" width="1475" height="1200" />
+			<div class="point" id="p-360-750">
+				<span>France <img src="_images/mobilymap/flags/france.png" alt="" /></span>
+				<p>France, officially the French Republic. It is the largest west-European country and possesses second-largest Exclusive Economic Zone in the world.</p>
+				<a href="http://en.wikipedia.org/wiki/France">http://en.wikipedia.org/wiki/France</a>
+			</div>
+			<div class="point" id="p-525-640">
+				<span>Germany <img src="_images/mobilymap/flags/germany.png" alt="" /></span>
+				<p>Germany, officially the Federal Republic of Germany. The territory of Germany covers an area of 357.021 km2 and is influenced by a temperate seasonal climate.</p>
+				<a href="http://en.wikipedia.org/wiki/Germany">http://en.wikipedia.org/wiki/Germany</a>
+			</div> 
+			<div class="point" id="p-700-610">
+				<span>Poland <img src="_images/mobilymap/flags/poland.png" alt="" /></span>
+				<p>Poland, officially the Republic of Poland. The total area of Poland is 312,679 square kilometres (120,726 sq mi),[2] making it the 69th largest country in the world and the 9th largest in Europe.</p>
+				<a href="http://en.wikipedia.org/wiki/Poland">http://en.wikipedia.org/wiki/Poland</a>
+			</div>  
+			<div class="point" id="p-560-900">
+				<span>Italy <img src="_images/mobilymap/flags/italy.png" alt="" /></span>
+				<p>Italy, officially the Italian Republic. With 60.4 million inhabitants, it is the fifth most populous country in Europe, and the twenty-third most populous in the world.</p>
+				<a href="http://en.wikipedia.org/wiki/Italy">http://en.wikipedia.org/wiki/Italy</a>
+			</div>
+			<div class="point" id="p-170-930">
+				<span>Spain <img src="_images/mobilymap/flags/spain.png" alt="" /></span>
+				<p>Spain, officially the Kingdom of Spain . With an area of 504,030 km², it is the second largest country in Western Europe and the European Union after France.</p>
+				<a href="http://en.wikipedia.org/wiki/Spain">http://en.wikipedia.org/wiki/Spain</a>
+			</div>
+		</div>
+		
+		<ul class="map_buttons">
+			<li><a href="#" rel="p-700-610">Poland</a></li>
+			<li><a href="#" rel="p-170-930">Spain</a></li>
+			<li><a href="#" rel="p-560-900">Italy</a></li>
+			<li><a href="#" rel="p-525-640">Germany</a></li>
+			<li><a href="#" rel="p-360-750">France</a></li>
+		</ul>
+	</div>
+
+</wicket:extend>
+</body>
+</html>

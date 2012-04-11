@@ -1,30 +1,66 @@
 /* CSS FOR MENU BAR */
-ul.navBar {
-	z-index: 1;
-	position: relative;
-	margin-left: 100px;
+.navBar {
+	position: absolute;
+	margin-left: 25px;
 	text-align: center;
-	padding-bottom: 50px;
-}
-
-li {
-	font-family: "HelveticaNeueLight", "HelveticaNeue-Light",
-		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
-		'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial",
-		sans-serif;
-	font-weight: 300;
-	font-stretch: normal;
-	font-size: 16px;
-	font-stretch: normal;
-	padding-right: 20px;
-	width: 105px;
-	height: 50px;
-	float: left;
-	color: white;
 	text-align: left;
-	overflow: hidden;
+	color: black;
+	padding-top: 220px;
 }
 
+.navBar li {
+	list-style-type: none;
+}
+
+.mainPageLogo {
+	position: absolute;
+	margin-top: -80px;
+}
+
+.separator {
+	padding-bottom: 25px;
+}
+
+.subMenu {
+	float: right;
+	list-style-type: none;
+}
+.subMenu li {
+	display:inline;
+}
+
+.subMenu a:hover{
+	color:blue;
+}
+
+.collections a:HOVER {
+	color: blue;
+}
+
+.collectionSub a:HOVER {
+	
+}
+
+#subMenu,.collectionSub li {
+	
+}
+
+/* li { */
+/* 	font-family: "HelveticaNeueLight", "HelveticaNeue-Light", */
+/* 		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", */
+/* 		'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", */
+/* 		sans-serif; */
+/* 	font-weight: 300; */
+/* 	font-stretch: normal; */
+/* 	font-size: 16px; */
+/* 	font-stretch: normal; */
+/* 	padding-right: 20px; */
+/* 	width: 105px; */
+/* 	height: 50px; */
+/* 	color: white; */
+/* 	text-align: left; */
+/* 	overflow: hidden; */
+/* } */
 h2 {
 	font-family: "Courier New", "HelveticaNeueLight", "HelveticaNeue-Light",
 		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
@@ -90,20 +126,6 @@ a {
 	background: #0292C0;
 }
 
-/* End Menu Bar CSS */
-#navBar li {
-	font-family: "HelveticaNeueLight", "HelveticaNeue-Light",
-		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
-		'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial",
-		sans-serif;
-	font-weight: 300;
-	font-stretch: normal;
-	display: inline;
-	font-size: 16px;
-	font-stretch: normal;
-	padding-right: 40px;
-}
-
 h2 {
 	font-family: "HelveticaNeueLight", "HelveticaNeue-Light",
 		"Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue",
@@ -124,10 +146,7 @@ p {
 }
 
 .contentArea {
-	position: absolute;
-	max-width: 700px;
 	padding-left: 100px;
-	padding-right: 300px;
 }
 
 /* Shop Panel CSS */
@@ -135,6 +154,10 @@ p {
 	margin-top: 150px;
 	text-align: center;
 	color: blue;
+}
+
+.shopContainer{
+	color: black;
 }
 
 .pageTitle {
@@ -174,18 +197,15 @@ p {
 
 .container {
 	background-color: white;
-	position: relative:     
-	z-index:      -1;
+	z-index: -1;
 	width: 980px;
 	margin: 0 auto;
-	-moz-box-shadow: 0px 5px 5px 5px #ccc;
-	-webkit-box-shadow: 0px 5px 5px 5px #ccc;
-	box-shadow: 5px 5px 5px 7px #ccc;
 	height: 100%;
 	min-height: 1200px;
 	overflow: visible;
 	text-align: left;
 	padding: 50px 50px 50px 50px;
+	width: 980px;
 }
 
 table.center {
@@ -198,9 +218,10 @@ table.center {
 }
 
 .centerComponent {
-	min-height: 505px;
-	position: absolute;
-	min-width: 950px;
+	text-align: center;
+	padding-top: 210px;
+	/* 	min-height: 505px; */
+	/* 	min-width: 950px; */
 }
 
 .mainPageTopTree {
@@ -210,14 +231,15 @@ table.center {
 }
 
 .mainPageImageContainer {
-	position: absolute;
-	margin-left: 120px;
+	margin-left: 520px;
+	margin-bottom: 300px;
+	margin-top: -100px;
+	margin-right: 50px;
 }
 
 .mainPageImage {
 	z-index: 1;
-	margin-right: width:        auto;
-	height: 500px;
+	margin-right: auto;
 }
 
 .treeLeft {
@@ -261,8 +283,6 @@ footer {
 }
 
 .aboutBorder {
-	z-index: 0;
-	position: absolute;
 	width: 900px;
 	margin-left: 25px;
 	border: 2px;
@@ -294,10 +314,9 @@ footer {
 /* CSS FOR CONTACT PAGE
 */
 .formContainer {
-	position: absolute;
 	text-align: center;
+	z-index: 1;
 	left: 300px;
-	float: right;
 }
 
 .formText {
@@ -329,6 +348,10 @@ footer {
 }
 
 .contactImage {
+	
+}
+
+.contactImageContainer {
 	float: left;
 }
 
@@ -379,7 +402,6 @@ input {
 label {
 	font-size: 14px;
 	padding-right: 5px;
-
 }
 
 input[type=submit] {
@@ -482,9 +504,11 @@ input[type=submit] {
 .reglabel {
 	padding: 5px 5px 5px 5px;
 }
-.newsletter_option{
+
+.newsletter_option {
 	right: 0px;
 }
-.whyRegister{
-	float:left;
+
+.whyRegister {
+	float: left;
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<body>
+<wicket:panel>
+
+	<div id="cloudZoomImage">
+		<a wicket:id="cloudZoom-bigImage"><img wicket:id="cloudZoom-smallImage" /></a>
+	</div>
+
+<wicket:enclosure child="gallery-repeater">
+	<div id="cloudZoomGallery">
+		<wicket:container wicket:id="gallery-repeater">
+			<a wicket:id="thumbnail-bigImage"><img wicket:id="thumbnail-smallImage" /></a>
+		</wicket:container>
+	</div>
+</wicket:enclosure>
+	
+</wicket:panel>
+</body>
+</html>

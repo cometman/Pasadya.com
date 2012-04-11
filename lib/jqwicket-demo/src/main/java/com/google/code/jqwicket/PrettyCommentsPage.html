@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<head>
+<wicket:head>
+<style type="text/css">
+textarea {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #797979;
+    font-family: Arial;
+    font-size: 1em;
+    padding: 3px;
+    width: 635px;
+}
+</style>
+</wicket:head>
+</head>
+<body>
+<wicket:extend>
+
+	<p><label for="commentBox">Enter your comment.</label><br /> 
+	<textarea wicket:id="commentBox1" cols="2" rows="2"></textarea></p> 
+	<p><label for="commentBox">This also work with multiple textarea.</label><br /> 
+	<textarea wicket:id="commentBox2" cols="2" rows="2"></textarea></p> 
+   
+</wicket:extend>
+</body>
+</html>

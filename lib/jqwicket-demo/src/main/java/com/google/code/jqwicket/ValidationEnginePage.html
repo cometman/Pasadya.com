@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<head>
+<wicket:head>
+<style type="text/css">
+form.formular {
+	font-family: tahoma, verdana, "sans-serif";
+	font-size: 12px;
+	padding: 20px;
+	border: 1px solid #A5A8B8;
+
+	width:300px;
+	margin-left:300px;
+}
+
+.formular fieldset {
+	margin-top: 20px;
+	padding : 15px;
+	border: 1px solid #B5B8C8;
+	
+}
+
+.formular legend {
+	font-size: 12px;
+	color: #15428B;
+	font-weight: 900;
+}
+
+.formular fieldset label {
+	float: none;
+	text-align: inherit;
+	width: auto;
+}
+
+.formular label span {
+	color: #000;
+}
+
+.formular input, .formular select, .formular textarea {
+	display : block;
+	margin-bottom: 5px;
+}
+
+.formular .text-input {
+	width: 250px;
+	color: #555;
+	padding: 4px;
+	border: 1px solid #B5B8C8;
+	font-size: 14px;
+	margin-top: 4px;
+	background: #FFF url('/img/form/text-bg.gif') repeat-x;
+	
+}
+.formular textarea {
+	width: 250px;
+	height:70px;
+	color: #555;
+	padding: 4px;
+	border: 1px solid #B5B8C8;
+	font-size: 14px;
+	margin-top: 4px;
+	background: #FFF url('/img/form/text-bg.gif') repeat-x;
+	
+}
+.formular .infos {
+	background: #FFF;
+	color: #333;
+	font-size: 12px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+.formular span.checkbox, .formular .checkbox {
+	display: inline;
+}
+
+.formular .submit {
+	background: url('/img/form/button-bg.png') repeat-x;
+	border: 1px solid #AAA;
+	padding: 4px;
+	margin-top: 20px;
+	float: right;
+	text-decoration: none;
+	cursor:pointer;
+}
+
+.formular hr {
+	clear: both;
+	visibility: hidden;
+}
+
+.formular .fc-error {
+	width: 350px;
+	color: 555;
+	padding: 4px;
+	border: 1px solid #B5B8C8;
+	font-size: 12px;
+	margin-bottom: 15px;
+	background: #FFEAEA;
+}
+</style>
+</wicket:head>
+</head>
+<body>
+<wicket:extend>
+
+<form wicket:id="veForm" class="formular" method="post" action="">
+	<fieldset>
+		<legend>User informations</legend>
+		<label>
+			<span>Desired username (ajax validation, only test is available) : </span>
+			<input type="text" name="user" wicket:id="user" />
+		</label>
+		<label>
+			<span>First name (optional)</span>
+			<input value="cedric" class="text-input" type="text" name="firstname" wicket:id="firstname" />
+		</label>
+		<label>
+			<span>Last name : </span>
+			<input class="text-input" type="text" name="lastname"  wicket:id="lastname" />
+		</label>
+	</fieldset>
+	<input class="submit" type="submit" value="Validate & Send the form!"/>
+	<hr/>
+</form>
+</wicket:extend>
+</body>
+</html>

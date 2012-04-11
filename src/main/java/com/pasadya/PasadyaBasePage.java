@@ -3,6 +3,7 @@ package com.pasadya;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -16,6 +17,7 @@ import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
 
@@ -34,60 +36,71 @@ public class PasadyaBasePage extends WebPage {
 	public CartPanel cartPanel;
 	private static final long serialVersionUID = 1L;
 	private AjaxLink<Void> cartLink;
+	private BookmarkablePageLink<Void> shopLink = new BookmarkablePageLink<Void>(
+			"shop", Shop.class);
+	private BookmarkablePageLink<Void> aboutLink = new BookmarkablePageLink<Void>(
+			"about", About.class);
+	private BookmarkablePageLink<Void> homeLink = new BookmarkablePageLink<Void>(
+			"home", HomePage.class);
+	private BookmarkablePageLink<Void> contactLink = new BookmarkablePageLink<Void>(
+			"contact", Contact.class);
+	private BookmarkablePageLink<Void> infoLink = new BookmarkablePageLink<Void>(
+			"info", HomePage.class);
 
 	public PasadyaBasePage() {
 		ExternalLink blogLink;
-		add(new BookmarkablePageLink<Void>("shop", Shop.class));
-		add(new BookmarkablePageLink<Void>("about", About.class));
-		add(new BookmarkablePageLink<Void>("portfolio", Portfolio.class));
-		add(new BookmarkablePageLink<Void>("home", HomePage.class));
-		add(new BookmarkablePageLink<Void>("contact", Contact.class));
+		add(shopLink);
+		add(aboutLink);
+		add(infoLink);
+		add(homeLink);
+		add(contactLink);
 
-		add(new Link<String>("art") {
-			private static final long serialVersionUID = 1L;
+		add(new Image("mainPageLogo", new PackageResourceReference(
+				HomePage.class, "assets/images/PasadyaBananas.png")));
+		 blogLink = new ExternalLink("blog",
+		 "http://www.hellopasadya.blogspot.com");
+		 add(blogLink);
+		// blogLink.add(new Label("blogLabel", "blog"));
 
-			@Override
-			public void onClick() {
-				setShopPageParam("art");
-				setResponsePage(Shop.class, parm);
-			}
-		});
-
-		add(new Link<String>("kids") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				setShopPageParam("kids");
-				setResponsePage(Shop.class, parm);
-			}
-		});
-
-		add(new Link<String>("babies") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				setShopPageParam("babies");
-				setResponsePage(Shop.class, parm);
-			}
-		});
-
-		add(new Link<String>("weddings") {
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				setShopPageParam("weddings");
-				setResponsePage(Shop.class, parm);
-			}
-		});
-
-		blogLink = new ExternalLink("blogLink",
-				"http://www.hellopasadya.blogspot.com");
-		add(blogLink);
-		blogLink.add(new Image("visitBlog", new PackageResourceReference(
-				HomePage.class, "assets/images/VisitBlogImage.png")));
+		// add(new Link<String>("	") {
+		// private static final long serialVersionUID = 1L;
+		//
+		// @Override
+		// public void onClick() {
+		// setShopPageParam("art");
+		// setResponsePage(Shop.class, parm);
+		// }
+		// });
+		//
+		// add(new Link<String>("kids") {
+		// private static final long serialVersionUID = 1L;
+		//
+		// @Override
+		// public void onClick() {
+		// setShopPageParam("kids");
+		// setResponsePage(Shop.class, parm);
+		// }
+		// });
+		//
+		// add(new Link<String>("babies") {
+		// private static final long serialVersionUID = 1L;
+		//
+		// @Override
+		// public void onClick() {
+		// setShopPageParam("babies");
+		// setResponsePage(Shop.class, parm);
+		// }
+		// });
+		//
+		// add(new Link<String>("weddings") {
+		// private static final long serialVersionUID = 1L;
+		//
+		// @Override
+		// public void onClick() {
+		// setShopPageParam("weddings");
+		// setResponsePage(Shop.class, parm);
+		// }
+		// });
 
 		// Add the account/cart panel
 
@@ -100,23 +113,23 @@ public class PasadyaBasePage extends WebPage {
 
 		add(cartPanel);
 
-		Label cartLabel = new Label("cartLabel", "cart Test");
+		// Label cartLabel = new Label("cartLabel", "cart Test");
+		//
+		// cartLink = new AjaxLink<Void>("cartLink") {
+		//
+		// @Override
+		// public void onClick(AjaxRequestTarget target) {
+		//
+		// cartPanel = cartPanel.getCartPanel();
+		//
+		//
+		// }
+		// };
 
-		cartLink = new AjaxLink<Void>("cartLink") {
-
-			@Override
-			public void onClick(AjaxRequestTarget target) {
-
-			cartPanel = cartPanel.getCartPanel();
-			
-
-			}
-		};
-
-		cartLink.add(new AttributeModifier("onclick",
-				".cartPannel.toggle(slow)"));
-		add(cartLink);
-		cartLink.add(cartLabel);
+		// cartLink.add(new AttributeModifier("onclick",
+		// ".cartPannel.toggle(slow)"));
+		// add(cartLink);
+		// cartLink.add(cartLabel);
 
 		// add(new Image("treeLeft", new
 		// PackageResourceReference(HomePage.class,

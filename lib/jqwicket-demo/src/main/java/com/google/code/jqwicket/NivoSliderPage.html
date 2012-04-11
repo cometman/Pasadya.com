@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<head>
+<wicket:head>
+<link rel="stylesheet" href="_styles/nivoslider/style.css" type="text/css" media="screen" />
+</wicket:head>
+</head>
+<body>
+<wicket:extend>
+<div id="wrapper">
+    <div id="slider-wrapper">
+    	<a href="http://dev7studios.com" id="dev7link" title="Go to dev7studios">dev7studios</a>
+        <div wicket:id="slider" class="nivoSlider">
+            <img src="_images/nivoslider/toystory.jpg" alt="" />
+            <a href="http://dev7studios.com"><img src="_images/nivoslider/up.jpg" alt="" title="This is an example of a caption" /></a>
+            <img src="_images/nivoslider/walle.jpg" alt="" />
+            <img src="_images/nivoslider/nemo.jpg" alt="" title="#htmlcaption" />
+        </div>
+        <div id="htmlcaption" class="nivo-html-caption">
+            <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+        </div>
+    </div>
+</div>
+</wicket:extend>
+</body>
+</html>

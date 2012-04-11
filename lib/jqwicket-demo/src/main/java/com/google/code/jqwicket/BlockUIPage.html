@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<body>
+<wicket:extend>
+   
+    <p>
+	    <input wicket:id="blockScreenButton"   type="button" value="Block screen" />
+	    <input wicket:id="blockScreenButton2"  type="button" value="Block screen with Message" />
+	    <input wicket:id="unblockScreenButton" type="button" value="Unblock screen" />
+    </p>
+    <br/>
+    <p>
+	    <input wicket:id="blockElementButton"   type="button" value="Block element" />
+	    <input wicket:id="blockElementButton2"  type="button" value="Block element with Message" />
+	    <input wicket:id="unblockElementButton" type="button" value="Unblock element" />
+    </p>
+    <br/>
+    
+    <div wicket:id="blockMe" style="width: 500px; height: 200px; border: 1px solid black;">
+    	this div should be blocked...
+    </div>
+    
+</wicket:extend>
+</body>
+</html>

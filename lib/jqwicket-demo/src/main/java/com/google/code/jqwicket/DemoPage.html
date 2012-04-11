@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<head>
+<title>JQWicket Demo Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+*, body {
+	margin: 0px;
+	font-family: "Trebuchet MS", "Helvetica", "Verdana", "sans-serif";
+	font-size: 10px;
+}
+
+#header {
+	height: 60px; 
+	background-image: url("_images/jqwicket-logo.png"); 
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-color: #FFFFFF;
+}
+
+#content {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#sidebar {
+	width: 250px;
+	float: left;
+}
+
+#sidebarTitle, #demoTitle {
+	height: 25px;
+	font-size: 19px;
+	margin-bottom: 10px;
+}
+
+#demoDescription {
+}
+
+#demoContent {
+	margin-top: 20px;
+}
+
+#demo {
+	float: left;
+	margin-left: 50px;
+	margin-right: 50px;
+	width: 700px;
+}
+
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-932654-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+	<div>
+		<div id="header" onclick="window.location = 'http://code.google.com/p/jqwicket';" onmouseover="document.body.style.cursor='pointer';" onmouseout="document.body.style.cursor='default';"></div>
+		<div id="content">
+			<div id="sidebar">
+				<div id="sidebarTitle">Example list</div>
+				<div id="sidebarContent">
+					<a href="genericjqbehavior">Generic JQBehavior</a><br/>
+					<a href="resizable">Resizable</a><br/>
+					<a href="selectable">Selectable</a><br/>
+					<a href="sortable">Sortable</a><br/>
+					<a href="accordion">Accordion</a><br/>
+					<a href="dynamicaccordion">Dynamic Accordion</a><br/>
+					<a href="button">Button</a><br/>
+					<a href="datepicker">DatePicker</a><br/>
+					<a href="datetimepicker">DateTimePicker</a><br/>
+					<a href="dialog">Dialog</a><br/>
+					<a href="progressbar">Progressbar</a><br/>
+					<a href="slider">Slider</a><br/>
+					<a href="notifier">Notifier</a><br/>
+					<a href="uniform">Uniform</a><br/>
+					<a href="uploadify">Uploadify</a><br/>
+					<a href="nivoslider">NivoSlider</a><br/>
+					<a href="maskedinput">Masked Input</a><br/>
+					<a href="colorpicker">Color Picker</a><br/>
+					<a href="jcarousel">JCarousel</a><br/>
+					<a href="tabs">Tabs</a><br/>
+					<a href="sparkline">Sparkline</a><br/>
+					<a href="tiptip">TipTip</a><br/>
+					<a href="cjimageflipbox">CJ Image Flipbox</a><br/>
+					<a href="liscroll">LiScroll</a><br/>
+					<a href="fancybox">FancyBox</a><br/>
+					<a href="cloudzoom">CloudZoom</a><br/>
+					<a href="gmap">GMap(v2)</a><br/>
+					<a href="fliptext">Flip Text</a><br/>
+					<a href="extruder">Extruder</a><br/>
+					<a href="kwicks">Kwicks</a><br/>
+					<a href="markitup">MarkItUp</a><br/>
+					<a href="lwrte">Lightweight Rich Text Editor</a><br/>
+					<a href="ckeditor">CKEditor</a><br/>
+					<a href="prettyloader">PrettyLoader</a><br/>
+					<a href="prettycomments">PrettyComments</a><br/>
+					<a href="prettypopin">PrettyPopin</a><br/>
+					<a href="prettygallery">PrettyGallery</a><br/>
+					<a href="validationengine">ValidationEngine</a><br/>
+					<a href="blockui">BlockUI</a><br/>
+					<a href="mobilymap">MobilyMap</a><br/>
+					<a href="guider">Guider</a><br/>
+					<a href="dnd">drag'n'drop example (low level)</a><br/>
+					<a href="dnd2">drag'n'drop example (high level)</a><br/>				
+				</div>
+			</div>
+			<div id="demo">
+				<div id="demoTitle"><span wicket:id="exampleTitle" /></div>
+				<div id="demoDescription" style="font-weight: bold;"><p wicket:id="exampleDescription" /></div>
+				<div id="demoContent">
+					<div style="clear: both;" />
+					<wicket:child/>
+				</div>
+				<div style="clear: both;" />
+				<br/><br/>
+				<div id="demoSource">
+					<div wicket:id="sourcePanel" />
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

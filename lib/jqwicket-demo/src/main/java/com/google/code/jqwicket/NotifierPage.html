@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<body>
+<wicket:extend> 
+
+
+<a wicket:id="notifier.open1">open notifier as behavior</a><br/>
+
+<div wicket:id="notifier1">
+ 
+    <!-- 
+    Later on, you can choose which template to use by referring to the 
+    ID assigned to each template.  You'll also be able to refer
+    to each template by index, so in this example, "basic-tempate" is
+    index 0 and "advanced-template" is index 1.
+    -->
+    <div id="basic-template">
+        <a class="ui-notify-cross ui-notify-close" href="#">x</a>
+        <h1>#{title}</h1>
+        <p>#{text}</p>
+    </div>
+ 
+    <div id="advanced-template">
+        <!-- ... you get the idea ... -->
+    </div>
+ 
+</div>
+
+</wicket:extend>
+</body>
+</html>

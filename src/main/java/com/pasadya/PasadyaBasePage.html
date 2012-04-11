@@ -16,11 +16,11 @@
 			$(' .accountPanel').toggle('slow');
 		});
 
-		$(' .cartLabel').click(function() {
-
+		$(' .cartButton').click(function() {
 			$('.accountPanel').hide();
 			$(' .cartPanel').toggle('slow');
 		});
+		$('.subMenu').hide();
 	});
 
 	function toggleCart() {
@@ -34,58 +34,37 @@
 			class="cartButton">cart</span>
 		<div class="accountPanel" wicket:id="accountPanel"></div>
 		<div class="cartPanel" wicket:id="cartPanel"></div>
-		<div class="cartLink" wicket:id="cartLink">
-			<div class="cartLabel" wicket:id="cartLabel"></div>
+		<div class="mainPageLogo">
+			<img wicket:id="mainPageLogo">
 		</div>
-		<ul class="navBar">
-			<li class="white">
-				<p>
-					<a wicket:id="home">PASADYA</a>
-				</p>
-				<p class="subtext">The Front page</p>
-			</li>
-			<li id="shop" class="white">
-				<p>
-					<a wicket:id="shop">SHOP</a>
-				</p> <a wicket:id="art" class="subtext">Art</a><br />
-				<div class="seperator"></div> <a wicket:id="babies" class="subtext">Babies</a><br />
-				<div class="seperator"></div> <a wicket:id="kids" class="subtext">Kids</a><br />
-				<div class="seperator"></div> <a wicket:id="weddings"
-				class="subtext">Weddings</a><br />
-				<div class="seperator"></div> <!-- 				<a wicket:id="cards" class="subtext">Cards</a><br /> -->
-
-				<!-- 				<div class="seperator"></div> <a wicket:id="customcards" -->
-				<!-- 				class="subtext">Custom Cards</a><br /> --> <!-- 				<div class="seperator"></div> <a wicket:id="custommurals" -->
-				<!-- 				class="subtext">Custom Murals</a> -->
-
-			</li>
-			<li id="about" class="white">
-				<p>
-					<a wicket:id="about">ABOUT</a>
-				</p> <a href=# class="subtext">What is Pasadya?</a>
-				<div class="seperator"></div> <a wicket:id="contact" class="subtext">Contact</a>
-			</li>
-			<li id="blog" class="white">
-				<p>
-					<a href="http://www.hellopasadya.blogspot.com" target="blank">BLOG</a>
-				</p>
-				<p class="subtext">Danies blog</p>
-			</li>
-			<li id="portfolio" class="white">
-				<p>
-					<a wicket:id="portfolio">PORTFOLIO</a>
-				</p> <a href=# class="subtext">View</a>
-			</li>
-		</ul>
-
-		<div style="text-align: center; margin-bottom: 50px;"></div>
+		<div class="navBar">
+			<!-- Main Menu -->
+			<ul>
+				<li><a wicket:id="home">HOME</a></li>
+				<div class="separator"></div>
+				<div onmouseover="$('.subMenu').show()"
+					onmouseout="$('.subMenu').hide()">
+					<li><a wicket:id="shop" class="collections">COLLECTIONS</a></li>
+					<div class="subMenu">
+						<li><a href=""> Abstract | </a></li>
+						<li><a href=""> Watercolor | </a></li>
+						<li><a href=""> Line | </a></li>
+					</div>
+				</div>
+				<div class="separator"></div>
+				<li><a wicket:id="about">ABOUT</a></li>
+				<div class="separator"></div>
+				<li><a wicket:id="blog">BLOG</a></li>
+				<div class="separator"></div>
+				<li><a wicket:id="info">INFO</a></li>
+				<div class="separator"></div>
+				<li><a wicket:id="contact">CONTACT</a></li>
+			</ul>
+		</div>
 		<div class="centerComponent">
 			<wicket:child />
 		</div>
-		<footer>
-			<a wicket:id="blogLink" target="blank" class="blogLink"><img
-				wicket:id="visitBlog" class="visitBlog" /></a>
-		</footer>
+
 
 	</div>
 </body>
