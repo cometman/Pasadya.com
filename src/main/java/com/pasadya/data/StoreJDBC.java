@@ -99,7 +99,6 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 			resultSet.beforeFirst();
 
 			while (resultSet.next()) {
-				System.out.println("Fetching...\n");
 				shopItems.add(this.mapItem(resultSet));
 			}
 			resultSet.close();

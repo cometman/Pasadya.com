@@ -63,6 +63,9 @@ public class Shop extends PasadyaBasePage implements Serializable {
 
 			@Override
 			protected List<ItemVO> load() {
+				if (shopSelection == null) {
+					shopSelection = "";
+				}
 				return sortItemList(shopSelection, allShopItems);
 			}
 		};
@@ -132,12 +135,20 @@ public class Shop extends PasadyaBasePage implements Serializable {
 	// selected.
 	public List<ItemVO> sortItemList(String selection, List<ItemVO> unsortedList) {
 		List<ItemVO> sortedlist = new ArrayList<ItemVO>();
-
-		for (ItemVO item : unsortedList) {
-			if (item.itemCategory.equals(selection)) {
+		if (!selection.equals("")) {
+			for (ItemVO item : unsortedList) {
+				if (item.itemCategory.equals(selection)) {
+					sortedlist.add(item);
+				}
+			}
+		}
+		// If there is no category selected, add all of the items.
+		else {
+			for (ItemVO item : unsortedList) {
 				sortedlist.add(item);
 			}
 		}
+
 		return sortedlist;
 
 	}
