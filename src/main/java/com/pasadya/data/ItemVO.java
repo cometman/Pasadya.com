@@ -36,6 +36,10 @@ public class ItemVO implements Serializable {
 	public void setItemCategory(String itemCategory) {
 		this.itemCategory = itemCategory;
 	}
+	
+	public void setItemId(int itemId){
+		this.itemId = itemId;
+	}
 	public int getItemId() {
 		return itemId;
 	}

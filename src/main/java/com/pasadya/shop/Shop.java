@@ -9,6 +9,7 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
@@ -51,10 +52,9 @@ public class Shop extends PasadyaBasePage implements Serializable {
 
 	public Shop(final PageParameters parms) {
 
+		loadAllShopItems();
 		shopSelection = parms.get(PageParametersConstants.SHOP_CATEGORY)
 				.toString();
-
-		allShopItems = ShopFactory.getInstance().getAllShopItems();
 
 		// Load the LDM with the artItems in it
 		LoadableDetachableModel<List<ItemVO>> shopModel = new LoadableDetachableModel<List<ItemVO>>() {
@@ -94,6 +94,11 @@ public class Shop extends PasadyaBasePage implements Serializable {
 						new PackageResourceReference(AssetReference.class,
 								"/images/shopsmall/NomNomLoveYouThumb.png"));
 
+				// Make a bookmarkable page link for the item
+
+				// BookmarkablePageLink<Void> itemPage = new
+				// BookmarkablePageLink<Void>(id, pageClass)
+
 				// Ajax Link for the modal Window
 				AjaxLink<Void> modalLink;
 				modalLink = new AjaxLink<Void>("modalLink") {
@@ -102,9 +107,17 @@ public class Shop extends PasadyaBasePage implements Serializable {
 
 					@Override
 					public void onClick(AjaxRequestTarget target) {
-						ItemPage itemPage = new ItemPage("hi");
-//						target.appendJavaScript(JAVASCRIPT_ATTRIBUTES);
-//						shopModalWindow.show(target);
+						PageParameters pars = new PageParameters();
+						pars.add("id", item.getModelObject().getItemId());
+						System.out.println("Good"
+								+ item.getModelObject().getItemId());
+						ItemPage itemPage = new ItemPage(pars);
+
+						itemPage.setShopItem(getItemFromShopItems(item
+								.getModelObject().getItemId()));
+						setResponsePage(itemPage);
+						// target.appendJavaScript(JAVASCRIPT_ATTRIBUTES);
+						// shopModalWindow.show(target);
 					}
 				};
 
@@ -151,5 +164,31 @@ public class Shop extends PasadyaBasePage implements Serializable {
 
 		return sortedlist;
 
+	}
+
+	public ItemVO getItemFromShopItems(int id) {
+		ItemVO item = null;
+
+		if (id != 0) {
+			for (ItemVO i : getallShopItems()) {
+				if (id == i.getItemId()) {
+					item = i;
+				}
+			}
+
+		}
+		return item;
+
+	}
+
+	public void loadAllShopItems() {
+		allShopItems = ShopFactory.getInstance().getAllShopItems();
+	}
+
+	public List<ItemVO> getallShopItems() {
+		if (allShopItems == null) {
+			loadAllShopItems();
+		}
+		return allShopItems;
 	}
 }

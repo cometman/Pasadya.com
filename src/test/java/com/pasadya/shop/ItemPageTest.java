@@ -2,6 +2,7 @@ package com.pasadya.shop;
 
 import static org.junit.Assert.*;
 
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,12 +22,19 @@ public class ItemPageTest {
 	
 	@Test
 	public void canFetchItemBasedOnID(){
+		
 		tester.startPage(HomePage.class);
 		tester.assertRenderedPage(HomePage.class);
 		tester.clickLink("shop");
-		tester.clickLink("thumbGalleryContainer:modalLink", true);
-//		tester.assertRenderedPage(ItemPage.class);
-
+	
+		PageParameters pars = new PageParameters();
+		pars.add("id", "1");
+		
+		tester.startPage(ItemPage.class, pars);
+		tester.assertRenderedPage(ItemPage.class);
+		System.out.println(tester.getLastRenderedPage().toString());
+		tester.assertContains("Xena Picture");
+	
 	}
 
 }

@@ -144,13 +144,36 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 
 	public ItemVO getShopItemByID(int id) {
 		ItemVO item = null;
+		Connection connection = null;
+		try {
+			connection = this.getConnection();
+			final String query = "SELECT * FROM Inventory WHERE id = ?";
+			PreparedStatement statement = connection.prepareStatement(query);
+			statement.setInt(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			resultSet.next();
 
+			resultSet.beforeFirst();
+
+			while (resultSet.next()) {
+				item = new ItemVO();
+				item.setItemName(resultSet.getString(2));
+				item.setItemDescription(resultSet.getString(3));
+				item.setItemPrice(resultSet.getString(4));
+			}
+			resultSet.close();
+		} catch (SQLException e) {
+
+		} finally {
+			catchAndClose(connection);
+		}
 		return item;
 	}
 
 	// Map the result set of the db query to the VO
 	private ItemVO mapItem(ResultSet resultSet) throws SQLException {
 		final ItemVO item = new ItemVO();
+		item.setItemId(resultSet.getInt("id"));
 		item.setItemCategory(resultSet.getString("category"));
 		item.setItemDescription(resultSet.getString("description"));
 		item.setItemName(resultSet.getString("name"));
