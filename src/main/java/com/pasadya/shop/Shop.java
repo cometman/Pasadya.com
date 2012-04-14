@@ -102,9 +102,9 @@ public class Shop extends PasadyaBasePage implements Serializable {
 
 					@Override
 					public void onClick(AjaxRequestTarget target) {
-
-						target.appendJavaScript(JAVASCRIPT_ATTRIBUTES);
-						shopModalWindow.show(target);
+						ItemPage itemPage = new ItemPage("hi");
+//						target.appendJavaScript(JAVASCRIPT_ATTRIBUTES);
+//						shopModalWindow.show(target);
 					}
 				};
 
