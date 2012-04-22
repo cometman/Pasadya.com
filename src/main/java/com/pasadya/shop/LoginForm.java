@@ -54,6 +54,8 @@ public class LoginForm extends Panel {
 					UserSession.get().setMember(
 							shopDAO.getMemberInformation(input.username, true));
 					setResponsePage(HomePage.class);
+					UserSession.get().setCartPanel(new CartPanel("cartPanel"));
+//					UserSession.get().getCartPanel().updateCartPanel();
 				} else {
 					log.error("Invalid login for user [" + input.username + "]");
 				}

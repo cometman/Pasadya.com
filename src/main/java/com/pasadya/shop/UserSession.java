@@ -15,8 +15,10 @@ public class UserSession extends WebSession {
 		return (UserSession) Session.get();
 	}
 
+	private CartPanel cartPanel;
 	private MemberVO member;
-	private CartVO cart;
+
+	// private CartVO cart;
 
 	public UserSession(Request request) {
 		super(request);
@@ -36,15 +38,26 @@ public class UserSession extends WebSession {
 		dirty();
 	}
 
-	public synchronized CartVO getCart(MemberVO member) {
-		if (cart == null) {
-			cart = new CartVO();
+	public CartPanel getCartPanel() {
+		if (cartPanel == null) {
+			cartPanel = new CartPanel("cartPanel");
 		}
-		return cart;
+		return cartPanel;
+	}
 
+	public void setCartPanel(CartPanel cartPanel) {
+		this.cartPanel = cartPanel;
 	}
-	
-	public void setCart(CartVO cart){
-		this.cart = cart;
-	}
+
+	// public synchronized CartVO getCart(MemberVO member) {
+	// if (cart == null) {
+	// cart = new CartVO();
+	// }
+	// return cart;
+	//
+	// }
+	//
+	// public void setCart(CartVO cart){
+	// this.cart = cart;
+	// }
 }

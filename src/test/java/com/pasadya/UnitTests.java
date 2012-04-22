@@ -1,5 +1,6 @@
 package com.pasadya;
 
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import com.pasadya.data.IShopDAO;
 import com.pasadya.data.ItemVO;
 import com.pasadya.data.MemberVO;
 import com.pasadya.data.ShopFactory;
+import com.pasadya.shop.ItemPage;
 import com.pasadya.shop.UserSession;
 
 /**
@@ -23,6 +25,13 @@ public class UnitTests {
 	@Before
 	public void setUp() {
 		tester = new WicketTester(new WicketApplication());
+		UserSession.get().setMember(
+				shopDAO.getMemberInformation("csbuiss@gmail.com", true));
+		ItemVO item = new ItemVO();
+		item.setItemName("Test");
+		item.setItemPrice("23");
+		item.setItemDescription("description");
+		UserSession.get().getMember().addToCart(item);
 	}
 
 	@Test
@@ -36,13 +45,11 @@ public class UnitTests {
 
 	@Test
 	public void testSession_did_authetnicate() {
-		UserSession session = UserSession.get();
 		MemberVO testMember = new MemberVO();
 		testMember.setFname("Clay");
 		testMember.setLname("Selby");
-		session.setMember(testMember);
-		assertNotNull(session.getMember());
-		assertTrue(session.isAuthenticated());
+		assertNotNull(UserSession.get().getMember());
+		assertTrue(UserSession.get().isAuthenticated());
 	}
 
 	@Test
@@ -61,59 +68,30 @@ public class UnitTests {
 		assertEquals(true, shopDAO.checkMemberEmail("csbuiss@gmail.com"));
 	}
 
-	@Test
-	public void canAddNewMember() {
-		tempMember.setFname("bob");
-		tempMember.setLname("selby");
-		tempMember.setUsername("xena");
-		tempMember.setPassword("horray");
-		tempMember.setEmail("msn@gmail.com");
-
-		shopDAO.setMemberInformation(tempMember);
-
-		assertTrue(shopDAO.getMemberInformation(tempMember.getUsername(), true)
-				.getUsername().equals("xena"));
-		System.out.println("TESTING");
-		System.out.println(shopDAO.getMemberInformation(
-				tempMember.getUsername(), true).getFname());
-	}
-
 	// See if we can add items to the cart
 	@Test
-	public void canAddItemToCart() {
+	public void canAddXenaItemToCart() {
+		// PageParameters pars = new PageParameters();
+		// pars.add("id", "1");
+		// ItemPage itemPage = new ItemPage(pars);
 
-		CartVO cart = new CartVO();
-
-		ItemVO testItem = new ItemVO();
-		testItem.setItemName("First Item");
-		testItem.setItemPrice("23.00");
-		testItem.setItemDescription("Stuff here");
-		testItem.setItemCategory("Art");
-		cart.addToCart(testItem);
-
-		UserSession.get().setCart(cart);
-		System.out.println("cool test "
-				+ UserSession.get().getCart(UserSession.get().getMember())
-						.getCartList().size());
-		assertEquals(1, cart.getCartList().size());
 	}
 
 	@Test
 	public void sessionCartContainsItems() {
-
-		assertEquals(1, UserSession.get()
-				.getCart(UserSession.get().getMember()).getCartList().size());
+		
+		assertEquals(1, UserSession.get().getMember().getCart().getCartList().size());
 
 	}
 
-	// This is the last test (It starts the server)
-	@Test
-	public void serverDidStart() {
-		try {
-			Start.main(null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	// This is the last test (It starts the server)
+//	@Test
+//	public void serverDidStart() {
+//		try {
+//			Start.main(null);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 }

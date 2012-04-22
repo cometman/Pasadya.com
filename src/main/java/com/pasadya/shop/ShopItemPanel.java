@@ -17,18 +17,18 @@ public class ShopItemPanel extends Panel {
 	public ShopItemPanel(String id, final IModel<ItemVO> modelObject) {
 		super(id, modelObject);
 
-		AjaxLink<Void> addToCartButton = new AjaxLink<Void>("addToCartButton") {
-
-			@Override
-			public void onClick(AjaxRequestTarget target) {
-				userSession.getCart(userSession.getMember()).addToCart(
-						modelObject.getObject());
-				System.out.println(userSession.getCart(userSession.getMember()).getCartList().size());
-			}
-		};
+//		AjaxLink<Void> addToCartButton = new AjaxLink<Void>("addToCartButton") {
+//
+//			@Override
+//			public void onClick(AjaxRequestTarget target) {
+//				userSession.getCart(userSession.getMember()).addToCart(
+//						modelObject.getObject());
+//				System.out.println(userSession.getCart(userSession.getMember()).getCartList().size());
+//			}
+//		};
 		Label addToCartLabel = new Label("addToCartLabel", "Add to Cart");
-		addToCartButton.add(addToCartLabel);
-		add(addToCartButton);
+//		addToCartButton.add(addToCartLabel);
+//		add(addToCartButton);
 		// add(new Label("itemName", modelObject.getObject().getItemName()));
 
 	}

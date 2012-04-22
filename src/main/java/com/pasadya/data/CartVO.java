@@ -17,7 +17,7 @@ public class CartVO implements Serializable {
 			cartList = new ArrayList<ItemVO>();
 
 		} else {
-			userSession.getCart(userSession.getMember());
+//			userSession.getCart(userSession.getMember());
 		}
 	}
 
@@ -47,5 +47,9 @@ public class CartVO implements Serializable {
 
 	public void addToCart(ItemVO item) {
 		cartList.add(item);
+	}
+	
+	public void removeItem(ItemVO item){
+		cartList.remove(item);
 	}
 }

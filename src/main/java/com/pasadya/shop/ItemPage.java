@@ -1,10 +1,16 @@
 package com.pasadya.shop;
 
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import com.pasadya.HomePage;
 import com.pasadya.PasadyaBasePage;
+import com.pasadya.data.CartVO;
 import com.pasadya.data.ItemVO;
 import com.pasadya.data.ShopFactory;
 
@@ -14,6 +20,9 @@ public class ItemPage extends PasadyaBasePage {
 
 	// Create a new item page for a selected item (based on item id)
 	private ItemVO itemVO;
+	private CartVO cart;
+	private UserSession session = UserSession.get();
+	private WebMarkupContainer wmc = new WebMarkupContainer("wmc");
 
 	public ItemPage(PageParameters pars) {
 		if (pars.get("id") != null) {
@@ -44,7 +53,6 @@ public class ItemPage extends PasadyaBasePage {
 	// done when users visits the shop page.
 	public boolean loadItemFromDatabase(int id) {
 		try {
-
 			itemVO = ShopFactory.getInstance().getShopItemByID(id);
 			return true;
 		} catch (Exception e) {
@@ -58,6 +66,31 @@ public class ItemPage extends PasadyaBasePage {
 
 	public void buildPage() {
 		add(new Label("itemName", itemVO.getItemName()));
+		add(new Label("itemPrice", itemVO.getItemPrice()));
+		add(new Label("itemDescription", itemVO.getItemDescription()));
+		AjaxLink<Void> addToCart = new AjaxLink<Void>("addToCart") {
 
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				System.out.println(itemVO.getItemName());
+				wmc.setOutputMarkupId(true);
+				target.add(wmc);
+				addItemToCart(itemVO);
+
+			}
+		};
+
+		add(addToCart);
+		addToCart.add(new Label("addToCartLabel", "Add to Cart"));
+
+	}
+
+	public void addItemToCart(ItemVO item) {
+		if (UserSession.get().getMember() != null) {
+			UserSession.get().getMember().getCart().addToCart(item);
+			UserSession.get().getCartPanel().updateCartPanel();
+		} else {
+			System.out.println("Register or check out anon!");
+		}
 	}
 }
