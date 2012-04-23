@@ -1,5 +1,7 @@
 package com.pasadya;
 
+import java.util.List;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -17,10 +19,12 @@ import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.PackageResourceReference;
 
+import com.pasadya.data.ItemVO;
 import com.pasadya.data.util.PageParametersConstants;
 import com.pasadya.pages.About;
 import com.pasadya.pages.Contact;
@@ -57,9 +61,9 @@ public class PasadyaBasePage extends WebPage {
 
 		add(new Image("mainPageLogo", new PackageResourceReference(
 				HomePage.class, "assets/images/PasadyaBananas.png")));
-		 blogLink = new ExternalLink("blog",
-		 "http://www.hellopasadya.blogspot.com");
-		 add(blogLink);
+		blogLink = new ExternalLink("blog",
+				"http://www.hellopasadya.blogspot.com");
+		add(blogLink);
 		// blogLink.add(new Label("blogLabel", "blog"));
 
 		// add(new Link<String>("	") {
@@ -108,7 +112,8 @@ public class PasadyaBasePage extends WebPage {
 		add(accountPanel);
 
 		if (cartPanel == null) {
-			cartPanel = new CartPanel("cartPanel");
+			cartPanel = new CartPanel("cartPanel", UserSession.get()
+					.getCartModel());
 		}
 
 		add(cartPanel);

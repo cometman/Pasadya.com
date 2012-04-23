@@ -42,4 +42,6 @@ public class ConnectionDAO extends StoreJDBC {
 			throw new SQLException(e);
 		}
 	}
+
+
 }

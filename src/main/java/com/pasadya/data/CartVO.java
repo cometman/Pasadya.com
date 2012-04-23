@@ -22,6 +22,7 @@ public class CartVO implements Serializable {
 	}
 
 	public List<ItemVO> getCartList() {
+
 		return cartList;
 	}
 

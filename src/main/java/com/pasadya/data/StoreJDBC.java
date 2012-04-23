@@ -178,6 +178,14 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 		item.setItemDescription(resultSet.getString("description"));
 		item.setItemName(resultSet.getString("name"));
 		item.setItemPrice(resultSet.getString("price"));
+		item.setSalePrice(resultSet.getDouble("sale_price"));
+		String publishStatus = resultSet.getString("publish");
+
+		if (publishStatus.equals("N")) {
+			item.setNotPublished();
+		} else {
+			item.setPublished();
+		}
 
 		return item;
 	}
@@ -326,6 +334,32 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 		} catch (SQLException e) {
 			// Swallow the connection
 		}
+	}
+
+	public boolean updateShopItem(ItemVO item) {
+		Connection conn = null;
+		try {
+			conn = this.getConnection();
+			final String updateQuery = "UPDATE Inventory SET category = ?, description = ?, price = ?, sale_price = ?, publish = ?, name = ? where id =?";
+			PreparedStatement query = conn.prepareStatement(updateQuery);
+
+			query.setString(1, item.getItemCategory());
+			query.setString(2, item.getItemDescription());
+			if (item.getItemPrice() != null || item.getItemPrice() != "") {
+				query.setDouble(3, Double.parseDouble(item.getItemPrice()));
+			}
+			query.setDouble(4, item.getSalePrice());
+			query.setString(5, item.getPublishStatus());
+			query.setString(6, item.getItemName());
+			query.setInt(7, item.getItemId());
+
+			query.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 	// Abstract method for getting the database Conneciton

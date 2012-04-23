@@ -1,11 +1,15 @@
 package com.pasadya.shop;
 
+import java.util.List;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.repeater.RepeatingView;
+import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import com.pasadya.HomePage;
@@ -22,7 +26,6 @@ public class ItemPage extends PasadyaBasePage {
 	private ItemVO itemVO;
 	private CartVO cart;
 	private UserSession session = UserSession.get();
-	private WebMarkupContainer wmc = new WebMarkupContainer("wmc");
 
 	public ItemPage(PageParameters pars) {
 		if (pars.get("id") != null) {
@@ -68,15 +71,18 @@ public class ItemPage extends PasadyaBasePage {
 		add(new Label("itemName", itemVO.getItemName()));
 		add(new Label("itemPrice", itemVO.getItemPrice()));
 		add(new Label("itemDescription", itemVO.getItemDescription()));
+
 		AjaxLink<Void> addToCart = new AjaxLink<Void>("addToCart") {
+			
+			private static final long serialVersionUID = 6137009651387150983L;
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
-				System.out.println(itemVO.getItemName());
-				wmc.setOutputMarkupId(true);
-				target.add(wmc);
 				addItemToCart(itemVO);
-
+				setOutputMarkupId(true);
+				cartPanel.updateCartPanel();
+				target.add(cartPanel);
+				System.out.println("Cart Model" + UserSession.get().getCartModel().getObject().size());
 			}
 		};
 
@@ -88,7 +94,6 @@ public class ItemPage extends PasadyaBasePage {
 	public void addItemToCart(ItemVO item) {
 		if (UserSession.get().getMember() != null) {
 			UserSession.get().getMember().getCart().addToCart(item);
-			UserSession.get().getCartPanel().updateCartPanel();
 		} else {
 			System.out.println("Register or check out anon!");
 		}
