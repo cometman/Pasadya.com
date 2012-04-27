@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import com.pasadya.data.CartHelper;
 import com.pasadya.data.CartVO;
@@ -44,8 +47,10 @@ public class CartPanel extends Panel {
 			cartListOfItems = UserSession.get().getMember().getCart()
 					.getCartList();
 				repeatingView.removeAll();
-
+				
 			for (ItemVO cartItem : cartListOfItems) {
+				PageParameters parms = new PageParameters();
+				parms.add("id", cartItem.getItemId());
 				repeatingView.add(new Label(repeatingView.newChildId(), cartItem.getItemName()));
 //				add(new Label(repeatingView.newChildId(),
 //						cartItem.getItemName()));

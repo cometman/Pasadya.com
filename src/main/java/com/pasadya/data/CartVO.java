@@ -10,7 +10,7 @@ public class CartVO implements Serializable {
 	private List<ItemVO> cartList;
 	private int quantity;
 	private String total;
-	private UserSession userSession = UserSession.get();
+
 
 	public CartVO() {
 		if (cartList == null) {
@@ -39,6 +39,11 @@ public class CartVO implements Serializable {
 	}
 
 	public String getTotal() {
+		double cartTotal =0;
+		for (ItemVO item: getCartList()){
+			cartTotal += item.getItemPrice();
+		}
+		total = String.valueOf(cartTotal);
 		return total;
 	}
 

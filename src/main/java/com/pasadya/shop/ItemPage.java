@@ -69,11 +69,11 @@ public class ItemPage extends PasadyaBasePage {
 
 	public void buildPage() {
 		add(new Label("itemName", itemVO.getItemName()));
-		add(new Label("itemPrice", itemVO.getItemPrice()));
+		add(new Label("itemPrice", Double.toString(itemVO.getItemPrice())));
 		add(new Label("itemDescription", itemVO.getItemDescription()));
 
 		AjaxLink<Void> addToCart = new AjaxLink<Void>("addToCart") {
-			
+
 			private static final long serialVersionUID = 6137009651387150983L;
 
 			@Override
@@ -82,7 +82,8 @@ public class ItemPage extends PasadyaBasePage {
 				setOutputMarkupId(true);
 				cartPanel.updateCartPanel();
 				target.add(cartPanel);
-				System.out.println("Cart Model" + UserSession.get().getCartModel().getObject().size());
+				System.out.println("Cart Model"
+						+ UserSession.get().getCartModel().getObject().size());
 			}
 		};
 

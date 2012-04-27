@@ -15,4 +15,5 @@ public interface IShopDAO {
 	public boolean checkMemberUsername(String username);
 	public boolean authenticateUser(String username, String password);
 	public boolean updateShopItem(ItemVO updates);
+	public boolean addShopItem(String name, double price, double salePrice, String description, String category, String publishStatus);
 }

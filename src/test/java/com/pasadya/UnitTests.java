@@ -29,7 +29,7 @@ public class UnitTests {
 				shopDAO.getMemberInformation("csbuiss@gmail.com", true));
 		ItemVO item = new ItemVO();
 		item.setItemName("Test");
-		item.setItemPrice("23");
+		item.setItemPrice(23);
 		item.setItemDescription("description");
 		UserSession.get().getMember().addToCart(item);
 	}

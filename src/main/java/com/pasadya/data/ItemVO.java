@@ -8,7 +8,7 @@ public class ItemVO implements Serializable {
 
 	public String itemName;
 	public String itemDescription;
-	public String itemPrice;
+	public double itemPrice;
 	private Double salePrice;
 	public String itemCategory;
 	public int itemId;
@@ -30,11 +30,11 @@ public class ItemVO implements Serializable {
 		this.itemDescription = itemDescription;
 	}
 
-	public String getItemPrice() {
+	public double getItemPrice() {
 		return itemPrice;
 	}
 
-	public void setItemPrice(String itemCost) {
+	public void setItemPrice(double itemCost) {
 		this.itemPrice = itemCost;
 	}
 

@@ -130,7 +130,7 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 				ItemVO item = new ItemVO();
 				item.setItemName(resultSet.getString(2));
 				item.setItemDescription(resultSet.getString(3));
-				item.setItemPrice(resultSet.getString(4));
+				item.setItemPrice(resultSet.getDouble(4));
 				inventory.add(item);
 			}
 			resultSet.close();
@@ -159,7 +159,7 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 				item = new ItemVO();
 				item.setItemName(resultSet.getString(2));
 				item.setItemDescription(resultSet.getString(3));
-				item.setItemPrice(resultSet.getString(4));
+				item.setItemPrice(resultSet.getDouble(4));
 			}
 			resultSet.close();
 		} catch (SQLException e) {
@@ -177,7 +177,7 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 		item.setItemCategory(resultSet.getString("category"));
 		item.setItemDescription(resultSet.getString("description"));
 		item.setItemName(resultSet.getString("name"));
-		item.setItemPrice(resultSet.getString("price"));
+		item.setItemPrice(resultSet.getDouble("price"));
 		item.setSalePrice(resultSet.getDouble("sale_price"));
 		String publishStatus = resultSet.getString("publish");
 
@@ -345,8 +345,8 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 
 			query.setString(1, item.getItemCategory());
 			query.setString(2, item.getItemDescription());
-			if (item.getItemPrice() != null || item.getItemPrice() != "") {
-				query.setDouble(3, Double.parseDouble(item.getItemPrice()));
+			if (item.getItemPrice() >= 0) {
+				query.setDouble(3, item.getItemPrice());
 			}
 			query.setDouble(4, item.getSalePrice());
 			query.setString(5, item.getPublishStatus());
@@ -360,6 +360,26 @@ public abstract class StoreJDBC implements IShopDAO, Serializable {
 			return false;
 		}
 
+	}
+
+	public boolean addShopItem(String name, double price, double salePrice,
+			String description, String category, String publishStatus) {
+		Connection conn = null;
+		try {
+			conn = this.getConnection();
+			final String addQuery = "INSERT INTO Inventory SET category = ?, description = ?, price = ?, sale_price = ?, publish = ?, name = ?";
+			PreparedStatement insertStatement = conn.prepareStatement(addQuery);
+			insertStatement.setString(1, category);
+			insertStatement.setString(2, description);
+			insertStatement.setDouble(3, price);
+			insertStatement.setDouble(4, salePrice);
+			insertStatement.setString(5, publishStatus);
+			insertStatement.setString(6, name);
+			
+			return insertStatement.execute();
+		} catch (SQLException e) {
+			return false;
+		}
 	}
 
 	// Abstract method for getting the database Conneciton
