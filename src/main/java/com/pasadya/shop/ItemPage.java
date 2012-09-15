@@ -7,13 +7,19 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.LoadableDetachableModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.IResource;
+import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.request.resource.ResourceReference;
 
 import com.pasadya.HomePage;
 import com.pasadya.PasadyaBasePage;
+import com.pasadya.assets.AssetReference;
 import com.pasadya.data.CartVO;
 import com.pasadya.data.ItemVO;
 import com.pasadya.data.ShopFactory;
@@ -71,7 +77,7 @@ public class ItemPage extends PasadyaBasePage {
 		add(new Label("itemName", itemVO.getItemName()));
 		add(new Label("itemPrice", Double.toString(itemVO.getItemPrice())));
 		add(new Label("itemDescription", itemVO.getItemDescription()));
-
+		add(buildItemImage());
 		AjaxLink<Void> addToCart = new AjaxLink<Void>("addToCart") {
 
 			private static final long serialVersionUID = 6137009651387150983L;
@@ -98,5 +104,13 @@ public class ItemPage extends PasadyaBasePage {
 		} else {
 			System.out.println("Register or check out anon!");
 		}
+	}
+	
+	private Image buildItemImage()
+	{
+		Image itemImage = new Image("itemImage",  new PackageResourceReference(AssetReference.class,
+				"/images/shopbig/InFranceImageNEW.jpg"));
+		
+		return itemImage;
 	}
 }

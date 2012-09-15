@@ -1,7 +1,7 @@
 /* CSS FOR MENU BAR */
 .navBar {
 	position: absolute;
-	margin-left: 25px;
+	margin-left: -20px;
 	text-align: center;
 	text-align: left;
 	color: black;
@@ -206,7 +206,7 @@ p {
 	height: 100%;
 	min-height: 1200px;
 	overflow: visible;
-	margin-left: 15%;
+	margin-left: 25%;
 	padding: 50px 50px 50px 50px;
 	width: 980px;
 }
@@ -288,9 +288,9 @@ footer {
 .aboutBorder {
 	width: 900px;
 	margin-left: 25px;
-	border: 2px;
-	border-style: solid;
-	border-color: gray;
+/* 	border: 2px; */
+/* 	border-style: solid; */
+/* 	border-color: gray; */
 	padding-top: 10px;
 	padding-bottom: 10px;
 	min-height: 500px;
@@ -521,4 +521,64 @@ input[type=submit] {
 
 .whyRegister {
 	float: left;
+}
+
+.itemImage
+{
+	float: right;
+
+	height: 45%;
+	width: auto;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #F0F0F0;
+	
+}
+
+.itemInfoContainer{
+	display: none;
+	margin-left: 100px;
+	float: right;
+}
+
+.titleBox
+{
+	height: 36px;
+	width: 272px;
+	margin-top: 19px;
+	background-color: black;
+	opacity: 0.5;
+	margin-left: 170px;
+	padding-top: 15px;
+/* 	text-align: left; */
+/* 	padding-left: 10px; */
+
+	
+}
+
+.itemPageText
+{
+		color: white;
+		font-weight: bold;
+		font-size:17px;
+}
+
+.descriptionBox
+{
+	margin-top: 16px;
+	height: 100px;
+	width: 250px;
+	margin-top: -1px;
+/* 	background-color: gray; */
+	opacity: 0.5;
+	margin-left: 170px;
+	padding-top: 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-top-style:none;
+/* 	text-align: left; */
+/* 	padding-left: 10px; */
+
+	
 }

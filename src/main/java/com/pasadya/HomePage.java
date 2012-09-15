@@ -1,13 +1,10 @@
 package com.pasadya;
 
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.code.jqwicket.ui.datepicker.DatePickerBehavior;
 
 public class HomePage extends PasadyaBasePage {
 	private static final long serialVersionUID = 1L;

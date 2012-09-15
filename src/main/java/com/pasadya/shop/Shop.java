@@ -100,8 +100,8 @@ public class Shop extends PasadyaBasePage implements Serializable {
 				// BookmarkablePageLink<Void>(id, pageClass)
 
 				// Ajax Link for the modal Window
-				AjaxLink<Void> modalLink;
-				modalLink = new AjaxLink<Void>("modalLink") {
+				AjaxLink<Void> itemPageLink;
+				itemPageLink = new AjaxLink<Void>("modalLink") {
 
 					private static final long serialVersionUID = 1L;
 
@@ -123,17 +123,17 @@ public class Shop extends PasadyaBasePage implements Serializable {
 
 				// Modal Window Properties
 
-				shopModalWindow.setInitialWidth(MODAL_WINDOW_WIDTH);
-				shopModalWindow.setInitialHeight(MODAL_WINDOW_HEIGHT);
-				shopModalWindow.setResizable(false);
-				shopModalWindow.setInitialWidth(0);
-				// shopModalWindow.setCssClassName("itemModal");
-
-				// Add the Elements to the page
-				item.add(modalLink);
-				modalLink.add(new Label("itemName", item.getModel().getObject()
+//				shopModalWindow.setInitialWidth(MODAL_WINDOW_WIDTH);
+//				shopModalWindow.setInitialHeight(MODAL_WINDOW_HEIGHT);
+//				shopModalWindow.setResizable(false);
+//				shopModalWindow.setInitialWidth(0);
+//				// shopModalWindow.setCssClassName("itemModal");
+//
+//				// Add the Elements to the page
+				item.add(itemPageLink);
+				itemPageLink.add(new Label("itemName", item.getModel().getObject()
 						.getItemName()));
-				modalLink.add(itemThumbImage);
+				itemPageLink.add(itemThumbImage);
 			}
 		};
 

@@ -5,10 +5,17 @@
 <title>Insert title here</title>
 </head>
 <wicket:extend>
-	<div wicket:id="itemName">[Product Name]</div>
-	<div wicket:id="itemDescription">[Product Description]</div>
-	<div wicket:id="itemPrice">[Item Price]</div>
-	<a wicket:id="addToCart"><div wicket:id="addToCartLabel"></div></a>
+	<div class="itemInfoContainer">
+		<div wicket:id="itemName">[Product Name]</div>
+		<div wicket:id="itemDescription">[Product Description]</div>
+		<div wicket:id="itemPrice">[Item Price]</div>
+			<a wicket:id="addToCart"><div wicket:id="addToCartLabel"></div></a>
+	</div>
+	<img wicket:id="itemImage" class="itemImage" />
+	<div class="titleBox itemPageText">In France&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp $30.00</div>
+	
+		<div class="descriptionBox itemPageText">In France&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp $30.00</div>
+
 </wicket:extend>
 
 </html>

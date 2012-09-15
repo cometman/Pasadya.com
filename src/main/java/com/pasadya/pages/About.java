@@ -16,7 +16,7 @@ public class About extends PasadyaBasePage {
 	@SuppressWarnings("rawtypes")
 	public About(){
 		Link homeLink;
-		add(new Image("danieProfile", new PackageResourceReference(HomePage.class, "assets/images/AboutMeImage.png")));
+//		add(new Image("danieProfile", new PackageResourceReference(HomePage.class, "assets/images/AboutMeImage.png")));
 		homeLink = new Link("homeLink") {
 			
 			private static final long serialVersionUID = 1L;
